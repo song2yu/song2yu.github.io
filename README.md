@@ -32,11 +32,11 @@
     </a>
 </div>
 
-I am a second-year postgraduate student in the School of Information and Communication Engineering at Dalian University of Technology with Prof. [Huchuan Lu](http://faculty.dlut.edu.cn/Huchuan_Lu/zh_CN/index.htm) and Prof. [Lijun Wang](http://faculty.dlut.edu.cn/wanglj/zh_CN/index.htm) of IIAU-Lab. 
+I am a second-year postgraduate student in the School of Information and Communication Engineering at Dalian University of Technology, under the supervision of Prof. [Huchuan Lu](http://faculty.dlut.edu.cn/Huchuan_Lu/zh_CN/index.htm) and Prof. [Lijun Wang](http://faculty.dlut.edu.cn/wanglj/zh_CN/index.htm) from IIAU-Lab. 
 
-During my undergraduate studies, I studied subjects such as control principles, communication principles, and image processing. I'm honored to be guided by professors like [Ran Song](https://ieeexplore.ieee.org/author/37546859100), [Shuaishuai Guo](https://scholar.google.com/citations?user=D_kCy_QAAAAJ&hl=zh-CN&oi=ao), and [Shuai Li](https://scholar.google.com/citations?hl=zh-CN&user=IECCPKUAAAAJ&view_op=list_works).
+During my undergraduate studies, I studied subjects such as control principles, communication principles, and image processing. I was honored to be guided by professors like [Ran Song](https://ieeexplore.ieee.org/author/37546859100), [Shuaishuai Guo](https://scholar.google.com/citations?user=D_kCy_QAAAAJ&hl=zh-CN&oi=ao), and [Shuai Li](https://scholar.google.com/citations?hl=zh-CN&user=IECCPKUAAAAJ&view_op=list_works).
 
-I am currently focusing on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **Gaussian Splatting**, and **multimodal tasks**.
+Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **Gaussian Splatting**, and **multimodal tasks**.
 
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
