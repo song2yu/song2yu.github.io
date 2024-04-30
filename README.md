@@ -70,7 +70,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 Songsong Yu$^{\dag}$}, Haiting Wang$^{\dag}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu
 
-ACM Multimedia(**ACM MM**) 2024
+Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
 [[Paper]()]
 
