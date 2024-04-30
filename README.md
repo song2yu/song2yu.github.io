@@ -19,6 +19,7 @@ Email3:SongsongYu203@163.com
 ## Education
 
 #### Dalian University of Technology, Dalian, China (Sep. 2022 - Now)
+
 Postgraduate student of Engineering in Eletronic Information Engineering
 
 Major Orientation: Depth Estimation and Audio-Visual Video Segmentation
@@ -28,8 +29,6 @@ Overall GPA: 4.37/5.0
 #### Shandong University, Jinan, China (Sep. 2018 - Jul. 2022)
 
 Bachelor of School of Control Science and Engineering
-
-Major Orientation: Depth Estimation and Audio-Visual Video Segmentation
 
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
