@@ -2,11 +2,8 @@
 
 # 于松松
 
-Master@[Hugo theme Stack](https://www.dlut.edu.cn)
-%This is a quick start template for [Hugo theme Stack](https://github.com/CaiJimmy/hugo-theme-stack). It uses [Hugo modules](https://gohugo.io/hugo-modules/) feature to load the theme.
-
-It comes with a basic theme structure and configuration. GitHub action has been set up to deploy the theme to a public GitHub page automatically. Also, there's a cron job to update the theme automatically everyday.
-
+### Master@[Dalian University of Technology](https://www.dlut.edu.cn)
+### [IIAU Lab](https://futureschool.dlut.edu.cn/IIAU.htm)
 ## Get started
 
 1. Click *Use this template*, and create your repository on GitHub.
