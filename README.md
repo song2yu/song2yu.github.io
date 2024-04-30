@@ -37,17 +37,11 @@ I am a second-year postgraduate student in the School of Information and Communi
 I am currently focusing on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **Gaussian Splatting**, and **multimodal tasks**.
 
 ## News
-<div style="width: 300px; height: 200px; overflow: auto;">
-  <p>这是一个滑动框示例。您可以在这里放置大量文本内容，当内容超出滑动框的可视区域时，将会显示滚动条。</p>
-  <p>这是另一段文本。</p>
-  <p>这是第三段文本。</p>
-      <p>这是另一段文本。</p>
-  <p>这是第三段文本。</p>
-      <p>这是另一段文本。</p>
-  <p>这是第三段文本。</p>
-      <p>这是另一段文本。</p>
-  <p>这是第三段文本。</p>
-  <!-- 添加更多文本内容以测试滑动框效果 -->
+<div style="width: 900px; height: 200px; overflow: auto;">
+<p>[2023/12/09]My first single-first-author paper DME has been accepted by AAAI 2024! Official Debut! </p>
+<p>[2022/09/21]I'm joining IIAU-Lab at DLUT as postgraduate student with Prof.Huchuan Lu and Prof.Lijun Wang.</p>
+<p>[2022/06/21]I have graduated from Shandong University today. See you in Dalian!</p>
+
 </div>
 
 
