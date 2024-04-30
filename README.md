@@ -11,7 +11,7 @@ Email2:1195653686@qq.com
 
 Email3:SongsongYu203@163.com
 <div style="display: flex; align-items: center; justify-content: flex-start;">
-    <a href="https://www.dlut.edu.cn" target="_blank" style="margin-right: 20px;">
+    <a href="[https://www.dlut.edu.cn](https://github.com/song2yu)" target="_blank" style="margin-right: 20px;">
         <img src="assets/img/github.jpg" alt="github Logo" style="width: 60px;">
     </a>
     <a href="[https://www.sdu.edu.cn](https://blog.csdn.net/weixin_46257458?type=blog)" target="_blank">
