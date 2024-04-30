@@ -14,7 +14,7 @@ Email3:SongsongYu203@163.com
 
 
 ## About Me
-<img width="100" alt="logo" src="assets/img/dlut.jpg style="margin-right: 20px; margin-top: 10px;">
+<img width="100" alt="logo" src="assets/img/dlut.jpg" style="margin-right: 20px; margin-top: 10px;">
 
 
 
