@@ -68,7 +68,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 **Multi-View Depth Completion with Coarse-to-Fine Networks**
 
-**Songsong Yu**, Haiting Wang, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu
+**$Songsong Yu^{1}$**, $Haiting Wang^{1}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu
 
 Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
