@@ -5,11 +5,11 @@
 ### Master Student @[Dalian University of Technology](https://www.dlut.edu.cn)
 ### [IIAU Lab](https://futureschool.dlut.edu.cn/IIAU.htm)
 
-<span style="font-family: 'Brush Script MT', cursive;">Email1</span>:22209083@mail.dlut.edu.cn(primary)
+<span style="font-family: 'Brush Script MT', cursive;">Email1</span>: 22209083@mail.dlut.edu.cn(primary)
 
-<span style="font-family: 'Brush Script MT', cursive;">Email2</span>:1195653686@qq.com
+<span style="font-family: 'Brush Script MT', cursive;">Email2</span>: 1195653686@qq.com
 
-<span style="font-family: 'Brush Script MT', cursive;">Email3</span>:SongsongYu203@163.com
+<span style="font-family: 'Brush Script MT', cursive;">Email3</span>: SongsongYu203@163.com
 
 <div style="display: flex; align-items: center; justify-content: flex-start;">
     <a href="https://github.com/song2yu" target="_blank" style="margin-right: 20px;">
