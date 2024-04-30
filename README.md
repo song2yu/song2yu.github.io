@@ -15,7 +15,7 @@ Email3:SongsongYu203@163.com
         <img src="assets/img/github.jpg" alt="github Logo" style="width: 60px;">
     </a>
     <a href="[https://www.sdu.edu.cn](https://blog.csdn.net/weixin_46257458?type=blog)" target="_blank">
-        <img src="assets/img/CSDN.jpg" alt="CSDN Logo" style="width: 60px;">
+        <img src="assets/img/csdn.jpg" alt="CSDN Logo" style="width: 60px;">
     </a>
 </div>
 
