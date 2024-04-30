@@ -53,11 +53,15 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
-![My Image](assets/img/sc.png)
-**DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation**
-
-
-
+<div class="row">
+  <div class="column">
+    <img src="assets/img/sc.png" alt="sc" style="width:50%">
+  </div>
+  <div class="column">
+    <h2>Title</h2>
+    <p>DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation.</p>
+  </div>
+</div>
 
 
 
