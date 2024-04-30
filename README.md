@@ -53,7 +53,7 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
-<img src="assets/img/sc.png" alt="dme" width="350px"> <img src="assets/img/moe.png" alt="dme" width="400px">
+<img src="assets/img/sc.png" alt="dme" width="350px"> <img src="assets/img/moe.png" alt="dme" width="550px">
 
 **DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation**
 
@@ -64,7 +64,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
 
-<img src="assets/img/c2f.jpg" alt="c2f" width="800px">
+<img src="assets/img/c2f.jpg" alt="c2f" width="900px">
 
 **Multi-View Depth Completion with Coarse-to-Fine Networks**
 
@@ -78,7 +78,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 
 
-<img src="assets/img/selm.png" alt="selm" width="800px">
+<img src="assets/img/selm.png" alt="selm" width="900px">
 
 **SelM: Selective Mechanism based Audio-Visual Segmentation**
 
