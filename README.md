@@ -58,7 +58,6 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
     <img src="assets/img/sc.png" alt="sc" style="width:50%">
   </div>
   <div class="column">
-    <h2>Title</h2>
     <p>DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation.</p>
   </div>
 </div>
