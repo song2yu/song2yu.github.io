@@ -102,8 +102,8 @@ Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, 
 <hr>
 
 ## Miscellaneous
-<link rel="stylesheet" href="https://fontawesome.com/icons/guitar?f=classic&s=solid">
-<i class="fa-solid fa-guitar"></i> I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<i class="fas fa-guitar"></i>I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
 
 
 
