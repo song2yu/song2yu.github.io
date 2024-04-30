@@ -23,7 +23,7 @@ Email3:SongsongYu203@163.com
     </a>
 </div>
 
-I am a second-year postgraduate student in the school of Information and Communication Engineering at Dalian University of Technology with Prof. Huchuan Lu and Prof. Lijun Wang of IIAU-Lab. 
+I am a second-year postgraduate student in the School of Information and Communication Engineering at Dalian University of Technology with Prof. [Huchuan Lu](http://faculty.dlut.edu.cn/Huchuan_Lu/zh_CN/index.htm) and Prof. [Lijun Wang](http://faculty.dlut.edu.cn/wanglj/zh_CN/index.htm) of IIAU-Lab. 
 
 I am currently focusing on depth estimation and Audio-Visual Video Segmentation. I also have a keen interest in diffusion models, Gaussian Splatting, and multimodal tasks.
 
