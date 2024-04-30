@@ -7,9 +7,10 @@
 
 <span style="font-family: 'Brush Script MT', cursive;">Email1</span>:22209083@mail.dlut.edu.cn(primary)
 
-Email2:1195653686@qq.com
+<span style="font-family: 'Brush Script MT', cursive;">Email2</span>:1195653686@qq.com
 
-Email3:SongsongYu203@163.com
+<span style="font-family: 'Brush Script MT', cursive;">Email3</span>:SongsongYu203@163.com
+
 <div style="display: flex; align-items: center; justify-content: flex-start;">
     <a href="https://github.com/song2yu" target="_blank" style="margin-right: 20px;">
         <img src="assets/img/github.jpg" alt="GitHub Logo" style="width: 60px;">
