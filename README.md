@@ -103,7 +103,7 @@ Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, 
 
 ## Miscellaneous
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<i class="fa-solid fa-guitar"></i> I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
+<i class="fas fa-laptop"></i> I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
 
 
 
