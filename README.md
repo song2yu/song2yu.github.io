@@ -68,7 +68,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 **Multi-View Depth Completion with Coarse-to-Fine Networks**
 
-**$Songsong Yu^{1}$**, $Haiting Wang^{1}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu
+**$Songsong Yu^{1}$**, $Haiting Wang^{1}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu ($equal contribution^{1}$)
 
 Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
@@ -82,7 +82,7 @@ Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
 **SelM: Selective Mechanism based Audio-Visual Segmentation**
 
-$Jiajun Li^{1}$, **$Songsong Yu^{1}$**, Yifan Wang, Lijun Wang, Huchuan Lu
+$Jiajun Li^{1}$, **$Songsong Yu^{1}$**, Yifan Wang, Lijun Wang, Huchuan Lu ($equal contribution^{1}$)
 
 ACM Multimedia(**ACM MM**) 2024
 
