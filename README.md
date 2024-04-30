@@ -78,6 +78,20 @@ ACM Multimedia(**ACM MM**) 2024
 
 
 
+<img src="assets/img/selm.png" alt="selm" width="600px">
+
+**SelM: Selective Mechanism based Audio-Visual Segmentation**
+
+Jiajun Li$^{\dag}$}, Songsong Yu$^{\dag}$}, Yifan Wang, Lijun Wang, Huchuan Lu
+
+ACM Multimedia(**ACM MM**) 2024
+
+[[Paper]()]
+
+
+
+
+
 
 
 
