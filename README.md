@@ -14,8 +14,11 @@ Email3:SongsongYu203@163.com
 
 
 ## About Me
-<img width="100" alt="logo" src="assets/img/dlut.jpg" style="display: inline-block; margin-right: 20px; margin-top: 10px;">
-<img width="100" alt="logo" src="assets/img/sdu.jpg" style="display: inline-block; margin-right: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: center; justify-content: center;">
+    <img src="assets/img/dlut.jpg" alt="Dalian University of Technology Logo" style="width: 100px; margin-right: 20px;">
+    <img src="assets/img/sdu.jpg" alt="Shandong University Logo" style="width: 100px;">
+</div>
+
 
 
 
