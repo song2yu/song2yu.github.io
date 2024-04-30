@@ -103,11 +103,11 @@ Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, 
 
 ## Miscellaneous
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<i class="fas fa-square"></i>[3 yrs +] <i class="fas fa-guitar"></i>  I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
+<i class="fas fa-square fa-xs"></i>[3 yrs +] <i class="fas fa-guitar"></i>  I love playing and singing folk songs. My favorite music teams include Wei Xu, The Beatles, Coldplay, and Queen.
 
-<i class="fas fa-square"></i>[4 yrs +] <i class="fas fa-dumbbell"></i>  I enjoy ruuning and exercising, and I have won second place in the 3Km men's group at the college.
+<i class="fas fa-square fa-xs"></i>[4 yrs +] <i class="fas fa-dumbbell"></i>  I enjoy ruuning and exercising, and I have won second place in the 3Km men's group at the college.
 
-<i class="fas fa-square"></i>[6 yrs +] <i class="fas fa-book"></i>  I enjoy reading, and my favorite writers are Xiaobo Wang, Han Han, and others.
+<i class="fas fa-square fa-xs"></i>[6 yrs +] <i class="fas fa-book"></i>  I enjoy reading, and my favorite writers are Xiaobo Wang, Han Han, and others.
 
 
 
