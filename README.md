@@ -103,7 +103,7 @@ Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, 
 
 ## Miscellaneous
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<i class="fas fa-square fa-xs"></i>[3 yrs +] <i class="fas fa-guitar"></i>  I have a passion for playing and singing folk songs. My favorite music bands include Wei Xu, The Beatles, Coldplay, and Queen.
+<i class="fas fa-square fa-xs"></i>[3 yrs +] <i class="fas fa-guitar"></i>  I have a passion for Rock and folk music. My favorite music bands include Wei Xu, The Beatles, Coldplay, and Queen.
 
 <i class="fas fa-square fa-xs"></i>[4 yrs +] <i class="fas fa-dumbbell"></i>  I enjoy running and exercising, and I achieved second place in the 3Km men's group at college.
 
