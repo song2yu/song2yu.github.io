@@ -64,7 +64,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
 
-<img src="assets/img/c2f.jpg" alt="c2f" width="600px">
+<img src="assets/img/c2f.jpg" alt="c2f" width="800px">
 
 **Multi-View Depth Completion with Coarse-to-Fine Networks**
 
@@ -78,7 +78,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 
 
-<img src="assets/img/selm.png" alt="selm" width="600px">
+<img src="assets/img/selm.png" alt="selm" width="800px">
 
 **SelM: Selective Mechanism based Audio-Visual Segmentation**
 
