@@ -53,7 +53,7 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
-<img src="assets/img/sc.png" alt="My Image" width="600px">
+<img src="assets/img/sc.png" alt="dme" width="600px">
 
 **DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation**
 
@@ -63,9 +63,14 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
 
+<img src="assets/img/selm.png" alt="selm" width="600px">
 
+**SelM: Selective Mechanism based Audio-Visual Segmentation**
 
+Jiajun Li$^{\dag}$}, Songsong Yu$^{\dag}$}, Yifan Wang, Lijun Wang, Huchuan Lu
 
+ACM Multimedia(**ACM MM**) 2024
+[[Paper]()]
 
 
 
