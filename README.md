@@ -59,7 +59,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 **Songsong Yu**, Yifan Wang, Yunzhi Zhuge, Lijun Wang, Huchuan Lu
 
-Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
+**Accepted by** Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
@@ -70,7 +70,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 **$Songsong Yu^{1}$**, $Haiting Wang^{1}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu ($equal contribution^{1}$)
 
-Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
+**Submitted to** Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
 [[Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4732434)]
 
@@ -84,7 +84,7 @@ Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
 $Jiajun Li^{1}$, **$Songsong Yu^{1}$**, Yifan Wang, Lijun Wang, Huchuan Lu ($equal contribution^{1}$)
 
-ACM Multimedia(**ACM MM**) 2024
+**Submitted to** ACM Multimedia(**ACM MM**) 2024
 
 [[Paper]()]
 
