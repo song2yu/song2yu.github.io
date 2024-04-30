@@ -60,6 +60,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 **Songsong Yu**, Yifan Wang, Yunzhi Zhuge, Lijun Wang, Huchuan Lu
 
 Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
+
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
 
@@ -70,6 +71,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 Jiajun Li$^{\dag}$}, Songsong Yu$^{\dag}$}, Yifan Wang, Lijun Wang, Huchuan Lu
 
 ACM Multimedia(**ACM MM**) 2024
+
 [[Paper]()]
 
 
