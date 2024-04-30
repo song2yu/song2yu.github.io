@@ -63,6 +63,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
+<hr>
 
 <img src="assets/img/c2f.jpg" alt="c2f" width="900px">
 
@@ -74,7 +75,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 [[Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4732434)]
 
-
+<hr>
 
 
 
@@ -88,7 +89,7 @@ Jiajun Li<sup>†</sup>, **Songsong<sup>†</sup>**, Yifan Wang, Lijun Wang, Huc
 
 [[Paper]()]
 
-
+<hr>
 
 
 
