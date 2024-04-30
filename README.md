@@ -55,7 +55,12 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 ## Publications
 <img src="assets/img/sc.png" alt="My Image" width="300px">
 
-**DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation.**
+**DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation**
+
+**Songsong Yu**, Yifan Wang, Yunzhi Zhuge, Lijun Wang, Huchuan Lu
+
+Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
+[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)
 
 
 
