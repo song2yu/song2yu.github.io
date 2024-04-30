@@ -14,6 +14,9 @@ Email3:SongsongYu203@163.com
 
 
 ## About Me
+<img align="left" width="150" alt="logo" src="assets/img/dlut.jpg">
+
+
 
 
 ## Education
