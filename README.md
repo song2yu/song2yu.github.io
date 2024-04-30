@@ -24,9 +24,7 @@ Email3:SongsongYu203@163.com
 </div>
 
 
-
-
-
+I am currently focusing on depth estimation and Audio-Visual Video Segmentation. I also have a keen interest in diffusion models, Gaussian Splatting, and multimodal tasks.
 
 ## Education
 
