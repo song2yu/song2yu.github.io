@@ -53,8 +53,8 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
-![My Image](assets/img/dlut.jpg)
-*这是图像旁边的描述文本，可以解释图像内容，也可以简单介绍自己。*
+![My Image](assets/img/sc.png)
+\textbf{DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation}
 
 
 
