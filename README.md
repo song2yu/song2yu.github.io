@@ -72,7 +72,7 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 
 Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
-[[Paper]()]
+[[Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4732434)]
 
 
 
