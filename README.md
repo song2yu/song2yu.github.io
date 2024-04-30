@@ -5,7 +5,7 @@
 ### Master Student @[Dalian University of Technology](https://www.dlut.edu.cn)
 ### [IIAU Lab](https://futureschool.dlut.edu.cn/IIAU.htm)
 
-Email1:22209083@mail.dlut.edu.cn
+Email1:22209083@mail.dlut.edu.cn(primary)
 
 Email2:1195653686@qq.com
 
@@ -13,7 +13,12 @@ Email3:SongsongYu203@163.com
 
 
 
-## Get started
+## About Me
+
+
+## Education
+
+## Publications
 
 1. Click *Use this template*, and create your repository on GitHub.
 ![Step 1](https://user-images.githubusercontent.com/5889006/156916624-20b2a784-f3a9-4718-aa5f-ce2a436b241f.png)
