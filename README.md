@@ -14,7 +14,7 @@ Email3:SongsongYu203@163.com
 
 
 ## About Me
-<div style="display: flex; align-items: center; justify-content: center;">
+<div style="display: flex; align-items: left; justify-content: center;">
     <a href="https://www.dlut.edu.cn" target="_blank" style="margin-right: 20px;">
         <img src="assets/img/dlut.jpg" alt="Dalian University of Technology Logo" style="width: 100px;">
     </a>
