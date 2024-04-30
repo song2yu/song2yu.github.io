@@ -82,7 +82,7 @@ Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
 
 **SelM: Selective Mechanism based Audio-Visual Segmentation**
 
-Jiajun Li, **Songsong Yu**, Yifan Wang, Lijun Wang, Huchuan Lu
+Jiajun Li$^{\dag}$, **Songsong Yu$^{\dag}$**, Yifan Wang, Lijun Wang, Huchuan Lu
 
 ACM Multimedia(**ACM MM**) 2024
 
