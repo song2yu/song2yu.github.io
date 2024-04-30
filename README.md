@@ -64,11 +64,11 @@ Association for the Advancement of Artificial Intelligence(**AAAI**) 2024
 [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28506)][[Code](https://github.com/YUsong360/DME-Unveilingthe-bias)]
 
 
-<img src="assets/img/selm.png" alt="selm" width="600px">
+<img src="assets/img/c2f.jpg" alt="c2f" width="600px">
 
-**SelM: Selective Mechanism based Audio-Visual Segmentation**
+**Multi-View Depth Completion with Coarse-to-Fine Networks**
 
-Jiajun Li$^{\dag}$}, Songsong Yu$^{\dag}$}, Yifan Wang, Lijun Wang, Huchuan Lu
+Songsong Yu$^{\dag}$}, Haiting Wang$^{\dag}$, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu
 
 ACM Multimedia(**ACM MM**) 2024
 
