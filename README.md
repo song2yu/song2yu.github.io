@@ -27,7 +27,7 @@ Overall GPA: 4.37/5.0
 
 #### Shandong University, Jinan, China (Sep. 2018 - Jul. 2022)
 
-Postgraduate student of Engineering in Eletronic Information Engineering
+Bachelor of School of Control Science and Engineering
 
 Major Orientation: Depth Estimation and Audio-Visual Video Segmentation
 
