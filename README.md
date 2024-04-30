@@ -38,9 +38,9 @@ I am currently focusing on **Depth Estimation** and **Audio-Visual Video Segment
 
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
-[2023/12/09]My first single-first-author paper [DME](https://ojs.aaai.org/index.php/AAAI/article/view/28506) has been accepted by AAAI 2024! Official Debut!
-[2022/09/21]I'm joining [IIAU-Lab](https://futureschool.dlut.edu.cn/IIAU.htm) at [DLUT](https://www.dlut.edu.cn) as postgraduate student with Prof. [Huchuan Lu](http://faculty.dlut.edu.cn/Huchuan_Lu/zh_CN/index.htm) and Prof. [Lijun Wang](http://faculty.dlut.edu.cn/wanglj/zh_CN/index.htm).
-[2022/06/21]I have graduated from Shandong University today. See you in Dalian!
+<p>[2023/12/09]My first single-first-author paper [DME](https://ojs.aaai.org/index.php/AAAI/article/view/28506) has been accepted by AAAI 2024! Official Debut!</p>
+<p>[2022/09/21]I'm joining [IIAU-Lab](https://futureschool.dlut.edu.cn/IIAU.htm) at [DLUT](https://www.dlut.edu.cn) as postgraduate student with Prof. [Huchuan Lu](http://faculty.dlut.edu.cn/Huchuan_Lu/zh_CN/index.htm) and Prof. [Lijun Wang](http://faculty.dlut.edu.cn/wanglj/zh_CN/index.htm).</p>
+<p>[2022/06/21]I have graduated from Shandong University today. See you in Dalian!</p>
 
 </div>
 
