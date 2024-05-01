@@ -38,6 +38,9 @@ During my undergraduate studies, I studied subjects such as control principles, 
 
 Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **Gaussian Splatting**, and **multimodal tasks**.
 
+
+<span style="color: red;">I am seeking a Ph.D. position. If you have any opportunities available, please feel free to email me. </span>
+
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
 <p>[2023/12/09] My first single-first-author paper <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28506">DME</a> has been accepted by AAAI 2024! Official Debut!</p>
