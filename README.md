@@ -86,7 +86,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 **Songsong Yu<sup>†</sup>**, Haiting Wang<sup>†</sup>, Jiajun Li, Yifan Wang, Lijun Wang, Huchuan Lu (<sup>†</sup>equal contribution)
 
-**Submitted to** Chinese Conference on Pattern Recognition and Computer Vision(**PRCV**) 2024
+**Submitted to** Chinese Conference on Pattern Recognition and Computer Vision(**ACCV**) 2024
 
 [[Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4732434)]
 
