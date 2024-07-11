@@ -30,6 +30,8 @@
     <a href="https://www.sdu.edu.cn" target="_blank">
         <img src="assets/img/sdu.jpg" alt="Shandong University Logo" style="width: 100px;">
     </a>
+        <img src="assets/img/arc.png" alt="ARC Lab, Tencent PCG Logo" style="width: 100px;">
+    </a>
 </div>
 
 I am a second-year postgraduate student in the School of Information and Communication Engineering at Dalian University of Technology, under the supervision of Prof. [Huchuan Lu](https://scholar.google.com/citations?user=D3nE0agAAAAJ&hl=zh-CN&oi=ao) and Prof. [Lijun Wang](https://scholar.google.com/citations?user=EfTwkXMolscC&hl=zh-CN&oi=ao) from IIAU-Lab. 
