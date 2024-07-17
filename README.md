@@ -38,7 +38,7 @@ I am a second-year postgraduate student in the School of Information and Communi
 
 During my undergraduate studies, I studied subjects such as control principles, communication principles, and image processing. I was honored to be guided by professors like [Shuai Liu](https://scholar.google.com/citations?hl=zh-CN&user=IECCPKUAAAAJ&view_op=list_works), [Shuaishuai Guo](https://scholar.google.com/citations?user=D_kCy_QAAAAJ&hl=zh-CN&oi=ao), and [Ran Song](https://ieeexplore.ieee.org/author/37546859100).
 
-Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **multimodal tasks**， and **3D Scene Understanding**.
+Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **multimodal tasks**, and **3D Scene Understanding**.
 
 I am interning at ARC LAB, Tencent PCG.
 
