@@ -102,9 +102,9 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 **SelM: Selective Mechanism based Audio-Visual Segmentation**
 
-Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, Huchuan Lu (<sup>†</sup>equal contribution **Oral 3.97%**)
+Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, Huchuan Lu (<sup>†</sup>equal contribution)
 
-**Accepted by** ACM Multimedia(**ACM MM**) 2024
+**Accepted by** ACM Multimedia(**ACM MM**) 2024 **Oral 3.97%**
 
 [[Paper]()]
 
