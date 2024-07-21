@@ -46,7 +46,7 @@ I am interning at ARC LAB, Tencent PCG.
 
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
-<p>[2022/07/16] One Paper named "SelM" has been accepted by ACM MM 2024.</p>
+<p>[2022/07/16] One Paper named "SelM" (Oral 3.97%) has been accepted by ACM MM 2024.</p>
 <p>[2023/12/09] My first single-first-author paper <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28506">DME</a> has been accepted by AAAI 2024! Official Debut!</p>
 <p>[2022/09/21] I'm joining <a href="https://futureschool.dlut.edu.cn/IIAU.htm">IIAU-Lab</a> at <a href="https://www.dlut.edu.cn">DLUT</a> as postgraduate student.</p>
 <p>[2022/06/21] I have graduated from <a href="https://www.sdu.edu.cn">Shandong University</a> today.</p>
