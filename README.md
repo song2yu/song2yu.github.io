@@ -42,7 +42,6 @@ Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video 
 
 I am interning at ARC LAB, Tencent PCG.
 
-<span style="color: red;">I am seeking a Ph.D. position. If you have any opportunities available, please feel free to email me. </span>
 
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
