@@ -71,6 +71,17 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
+<img src="assets/img/training.png" alt="dme" width="350px"> <img src="assets/img/moe.png" alt="dme" width="550px">
+
+**Mono2Stereo: A Benchmark and Empirical Study for Stereo Conversion**
+
+**Songsong Yu**, Yuxin Chen, Zeke Xie, Yifan Wang, Lijun Wang, Zhongang Qi, YingShan, Huchuan Lu
+
+**Accepted by** IEEE Conference on Computer Vision and Pattern Recognition(**CVPR**) 2025
+
+[Paper and Code are Comming soon]
+
+<hr>
 <img src="assets/img/sc.png" alt="dme" width="350px"> <img src="assets/img/moe.png" alt="dme" width="550px">
 
 **DME: Unveiling the Bias for Better Generalized Monocular Depth Estimation**
