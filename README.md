@@ -71,7 +71,7 @@ Bachelor of School of Control Science and Engineering
 Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
-<img src="assets/img/training.jpg" alt="dme" width="350px">
+<img src="assets/img/training.jpg" alt="dme" width="900px">
 
 **Mono2Stereo: A Benchmark and Empirical Study for Stereo Conversion**
 
