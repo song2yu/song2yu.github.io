@@ -30,6 +30,7 @@
     <a href="https://www.sdu.edu.cn" target="_blank">
         <img src="assets/img/sdu.jpg" alt="Shandong University Logo" style="width: 100px;">
     </a>
+    <a href="[https://www.sdu.edu.cn](https://arc.tencent.com/zh/index)" target="_blank">
         <img src="assets/img/arc.png" alt="ARC Lab, Tencent PCG Logo" style="width: 100px;">
     </a>
 </div>
