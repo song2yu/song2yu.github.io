@@ -118,7 +118,7 @@ Jiajun Li<sup>†</sup>, **Songsong Yu<sup>†</sup>**, Yifan Wang, Lijun Wang, 
 
 **Accepted by** ACM Multimedia(**ACM MM**) 2024 **Oral 3.97%**
 
-[[Paper]()]
+[[Paper](https://dl.acm.org/doi/pdf/10.1145/3664647.3680926)[Code](https://github.com/Cyyzpoi/SelM)]
 
 <hr>
 
