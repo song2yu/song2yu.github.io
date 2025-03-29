@@ -81,7 +81,7 @@ Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 **Accepted by** IEEE Conference on Computer Vision and Pattern Recognition(**CVPR**) 2025
 
-[paper](https://mono2stereo-bench.github.io/) [project](https://mono2stereo-bench.github.io/)
+[[paper]](https://mono2stereo-bench.github.io/) [[project]](https://mono2stereo-bench.github.io/)
 
 <hr>
 <img src="assets/img/sc.png" alt="dme" width="350px"> <img src="assets/img/moe.png" alt="dme" width="550px">
