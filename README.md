@@ -2,8 +2,8 @@
 
 # 于松松
 
-### Master Student @[Dalian University of Technology](https://www.dlut.edu.cn)
-### [IIAU Lab](https://futureschool.dlut.edu.cn/IIAU.htm)
+### Ph.D. @[Shanghai Jiao Tong University]([https://www.dlut.edu.cn](https://soai.sjtu.edu.cn/))
+
 
 <i class="fas fa-envelope"></i>1: 22209083@mail.dlut.edu.cn(primary)
 
@@ -35,17 +35,18 @@
     </a>
 </div>
 
-I am a second-year postgraduate student in the School of Information and Communication Engineering at Dalian University of Technology, under the supervision of Prof. [Huchuan Lu](https://scholar.google.com/citations?user=D3nE0agAAAAJ&hl=zh-CN&oi=ao) and Prof. [Lijun Wang](https://scholar.google.com/citations?user=EfTwkXMolscC&hl=zh-CN&oi=ao) from IIAU-Lab. 
+During my graduate studies, I was supervised by Prof. [Huchuan Lu](https://scholar.google.com/citations?user=D3nE0agAAAAJ&hl=zh-CN&oi=ao) and Prof. [Lijun Wang](https://scholar.google.com/citations?user=EfTwkXMolscC&hl=zh-CN&oi=ao) at Dalian University of Technology, where I obtained a Master's Degree. My research focused on depth estimation, audio-visual segmentation, and stereo image generation.
 
 During my undergraduate studies, I studied subjects such as control principles, communication principles, and image processing. I was honored to be guided by professors like [Shuai Liu](https://scholar.google.com/citations?hl=zh-CN&user=IECCPKUAAAAJ&view_op=list_works), [Shuaishuai Guo](https://scholar.google.com/citations?user=D_kCy_QAAAAJ&hl=zh-CN&oi=ao), and [Ran Song](https://ieeexplore.ieee.org/author/37546859100).
 
-Currently, my research focuses on **Depth Estimation** and **Audio-Visual Video Segmentation**. I also have a keen interest in **diffusion models**, **multimodal tasks**, and **3D Scene Understanding**.
+Currently, my research focuses on **multimodal models** and **spatial intelligence**. I also have a keen interest in **generation models**.
 
-I am interning at ARC LAB, Tencent PCG.
+Currently interning at ARC LAB, Tencent PCG, with plans to enroll in a Ph.D. program in Artificial Intelligence at Shanghai Jiao Tong University in September.
 
 
 ## News
 <div style="width: 900px; height: 200px; overflow: auto;">
+<p>[2025/06/06] Today I graduated from Dalian University of Technology, and I am expected to enroll in Shanghai Jiao Tong University in September. </p>
 <p>[2025/02/27] My paper named "<a href="https://mono2stereo-bench.github.io/">Mono2Stereo</a>" has been accepted by CVPR 2025.</p>
 <p>[2024/07/21] One paper named "<a href="https://dl.acm.org/doi/pdf/10.1145/3664647.3680926">SelM</a>" (<strong>Oral 3.97%</strong>) has been accepted by ACM MM 2024.</p>
 <p>[2023/12/09] My first single-first-author paper <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28506">DME</a> has been accepted by AAAI 2024! Official Debut!</p>
@@ -64,13 +65,9 @@ Postgraduate student of Engineering in Eletronic Information Engineering
 
 Major Orientation: Depth Estimation and Audio-Visual Video Segmentation
 
-Overall GPA: 4.37/5.0
-
 #### Shandong University, Jinan, China (Sep. 2018 - Jul. 2022)
 
 Bachelor of School of Control Science and Engineering
-
-Overall GPA: 3.87/5.0 (Recommended postgraduate)
 
 ## Publications
 <img src="assets/img/training.jpg" alt="dme" width="900px">
