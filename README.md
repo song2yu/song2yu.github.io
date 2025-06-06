@@ -45,7 +45,7 @@ I am interning at ARC LAB, Tencent PCG, with plans to enroll in a Ph.D. program 
 
 
 ## News
-<div style="width: 900px; height: 200px; overflow: auto;">
+<div style="width: 1200px; height: 200px; overflow: auto;">
 <p>[2025/06/06] Today I graduated from Dalian University of Technology, and I am expected to enroll in Shanghai Jiao Tong University in September. </p>
 <p>[2025/02/27] My paper named "<a href="https://mono2stereo-bench.github.io/">Mono2Stereo</a>" has been accepted by CVPR 2025.</p>
 <p>[2024/07/21] One paper named "<a href="https://dl.acm.org/doi/pdf/10.1145/3664647.3680926">SelM</a>" (<strong>Oral 3.97%</strong>) has been accepted by ACM MM 2024.</p>
