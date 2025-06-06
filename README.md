@@ -41,7 +41,7 @@ During my undergraduate studies, I studied subjects such as control principles, 
 
 Currently, my research focuses on **multimodal models** and **spatial intelligence**. I also have a keen interest in **generation models**.
 
-Currently interning at ARC LAB, Tencent PCG, with plans to enroll in a Ph.D. program in Artificial Intelligence at Shanghai Jiao Tong University in September.
+I am interning at ARC LAB, Tencent PCG, with plans to enroll in a Ph.D. program in Artificial Intelligence at Shanghai Jiao Tong University in September.
 
 
 ## News
