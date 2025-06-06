@@ -58,8 +58,13 @@ I am interning at ARC LAB, Tencent PCG, with plans to enroll in a Ph.D. program 
 
 
 ## Education
+#### Shanghai Jiao Tong University, Shanghai, China (Now - 2029)
 
-#### Dalian University of Technology, Dalian, China (Sep. 2022 - Now)
+Ph.D. in the School of Artificial Intelligence
+
+Research Interests: Spatial Intelligence, Embodied AI
+
+#### Dalian University of Technology, Dalian, China (Sep. 2022 - Jun. 2025)
 
 Postgraduate student of Engineering in Eletronic Information Engineering
 
