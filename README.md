@@ -5,11 +5,10 @@
 ### Ph.D. @[Shanghai Jiao Tong University]([https://www.dlut.edu.cn](https://soai.sjtu.edu.cn/))
 
 
-<i class="fas fa-envelope"></i>1: 22209083@mail.dlut.edu.cn(primary)
+<i class="fas fa-envelope"></i>1: SongsongYu203@163.com(primary)
 
-<i class="fas fa-envelope"></i>2: 1195653686@qq.com
+<i class="fas fa-envelope"></i>2: WeChat:yss5653686
 
-<i class="fas fa-envelope"></i>3: SongsongYu203@163.com
 
 <div style="display: flex; align-items: center; justify-content: flex-start;">
     <a href="https://github.com/song2yu" target="_blank" style="margin-right: 20px;">
