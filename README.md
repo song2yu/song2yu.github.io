@@ -7,8 +7,6 @@
 
 <i class="fas fa-envelope"></i>1: SongsongYu203@163.com(primary)
 
-<i class="fas fa-envelope"></i>2: WeChat:yss5653686
-
 
 <div style="display: flex; align-items: center; justify-content: flex-start;">
     <a href="https://github.com/song2yu" target="_blank" style="margin-right: 20px;">
