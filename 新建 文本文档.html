@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张远山 - 个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 引入 Marked.js 用于解析 GitHub Issue 的 Markdown 内容 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    animation: { 'blob': 'blob 7s infinite', 'fade-in-up': 'fadeInUp 0.5s ease-out forwards' },
+                    keyframes: {
+                        blob: { '0%': { transform: 'translate(0px, 0px) scale(1)' }, '33%': { transform: 'translate(30px, -50px) scale(1.1)' }, '66%': { transform: 'translate(-20px, 20px) scale(0.9)' }, '100%': { transform: 'translate(0px, 0px) scale(1)' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        /* Markdown 样式适配 */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .prose h1, .prose h2, .prose h3 { color: #1e293b; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
+        .prose p { margin-bottom: 1em; }
+        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; }
+        .prose a { color: #4f46e5; text-decoration: underline; }
+        .prose blockquote { border-left: 4px solid #e2e8f0; padding-left: 1rem; font-style: italic; color: #64748b; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700">
+
+    <div id="app" class="min-h-screen flex flex-col"></div>
+
+    <script>
+        // =================================================================
+        // ⚙️ 配置中心 (请修改这里！)
+        // =================================================================
+        const GITHUB_CONFIG = {
+            username: 'your-github-username', // 替换为你的 GitHub 用户名
+            repository: 'your-repo-name',     // 替换为你的仓库名
+            label: 'note'                     // 只有带这个标签的 Issue 才会显示
+        };
+
+        // 静态数据 (个人简介等不常变的内容)
+        const STATIC_DATA = {
+            profile: {
+                name: "张远山",
+                title: "人工智能研究员 / 全栈开发者",
+                bio: "致力于探索人机交互的未来，热爱开源社区。在深度学习与前端工程化领域有深入研究。喜欢用代码构建美好的事物。",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+            },
+            experience: [
+                { role: "高级算法工程师", company: "未来科技研究院", period: "2021 - 至今", desc: "负责大语言模型微调与推理加速，主导了两个开源项目的落地，提升了30%的系统响应速度。" },
+                { role: "全栈开发工程师", company: "创新数字工坊", period: "2019 - 2021", desc: "独立负责核心SaaS产品的前端架构重构，引入React Hooks与TypeScript，显著提升代码可维护性。" }
+            ],
+            papers: [
+                { title: "Optimizing Transformer Architectures for Edge Devices", conference: "CVPR 2023", abstract: "提出了一种新型的轻量级注意力机制...", link: "#" },
+                { title: "A Survey on Human-AI Collaboration Patterns", conference: "CHI 2022", abstract: "系统性回顾了过去五年的协作模式...", link: "#" }
+            ],
+            interests: [
+                { name: "摄影", icon: "camera" }, { name: "徒步", icon: "mountain" }, { name: "科幻阅读", icon: "book" }, { name: "咖啡", icon: "coffee" }
+            ]
+        };
+
+        // ================= 状态管理 =================
+        const state = {
+            view: 'home', 
+            selectedNoteId: null,
+            notes: [], // 现在是空的，将从 GitHub 获取
+            loading: false,
+            error: null
+        };
+
+        // ================= 核心逻辑：从 GitHub Fetch 数据 =================
+        async function fetchNotes() {
+            state.loading = true;
+            render(); // 显示加载状态
+            
+            // 如果没有配置，使用演示数据
+            if (GITHUB_CONFIG.username === 'your-github-username') {
+                state.notes = [
+                    { id: 1, title: "欢迎使用动态笔记系统", content: "### 配置说明\n请编辑 `index.html` 文件，修改 `GITHUB_CONFIG` 变量。\n\n将 `username` 和 `repository` 改为您自己的 GitHub 信息。\n\n然后去 Issues 里发布带有 `note` 标签的帖子，它们就会显示在这里。", date: "2025-01-01", image: "", comments_url: "#" },
+                    { id: 2, title: "这是一个演示笔记", content: "当您配置好之后，这里会显示您 GitHub 仓库里的 Issue 内容。\n\n支持 **Markdown** 语法和图片展示。", date: "2025-01-02", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80", comments_url: "#" }
+                ];
+                state.loading = false;
+                render();
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repository}/issues?labels=${GITHUB_CONFIG.label}&state=open&sort=created&direction=desc`);
+                
+                if (!response.ok) throw new Error('无法连接 GitHub API，请检查用户名和仓库名配置');
+                
+                const data = await response.json();
+                
+                // 数据转换：将 GitHub Issue 转换为我们的笔记格式
+                state.notes = data.map(issue => {
+                    // 尝试从 markdown 中提取第一张图片作为封面
+                    const imgMatch = issue.body.match(/!\[.*?\]\((.*?)\)/);
+                    const coverImage = imgMatch ? imgMatch[1] : '';
+                    
+                    return {
+                        id: issue.id,
+                        title: issue.title,
+                        content: issue.body, // 保留 Markdown 原始内容
+                        date: issue.created_at.split('T')[0],
+                        image: coverImage,
+                        comments_count: issue.comments,
+                        html_url: issue.html_url // 跳转到 GitHub 原文的链接
+                    };
+                });
+                state.error = null;
+            } catch (err) {
+                console.error(err);
+                state.error = "加载笔记失败，请检查配置或网络连接 (GitHub API 可能有访问限制)";
+            } finally {
+                state.loading = false;
+                render();
+            }
+        }
+
+        // ================= 渲染逻辑 =================
+        const app = document.getElementById('app');
+
+        function render() {
+            app.innerHTML = '';
+            if (state.view === 'home') renderHome();
+            else renderNotesApp();
+            lucide.createIcons();
+        }
+
+        // --- 渲染主页 ---
+        function renderHome() {
+            const html = `
+                <header class="sticky top-0 z-50 glass border-b border-slate-200/60 shadow-sm transition-all duration-300">
+                    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                        <div class="font-bold text-2xl tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent cursor-pointer">
+                            ZY.Space
+                        </div>
+                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 items-center">
+                            <a href="#" onclick="scrollToId('about'); return false;" class="hover:text-indigo-600 transition-colors">关于</a>
+                            <a href="#" onclick="scrollToId('experience'); return false;" class="hover:text-indigo-600 transition-colors">经历</a>
+                            <a href="#" onclick="scrollToId('papers'); return false;" class="hover:text-indigo-600 transition-colors">论文</a>
+                            <button onclick="navigateTo('notes')" class="flex items-center space-x-2 px-5 py-2.5 rounded-full bg-slate-900 text-white hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                                <i data-lucide="book-open" class="w-4 h-4"></i> <span>个人笔记</span>
+                            </button>
+                        </nav>
+                    </div>
+                </header>
+                <main class="flex-grow relative overflow-hidden">
+                    <!-- 背景动画 -->
+                    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+                        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                        <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                    </div>
+                    
+                    <!-- Hero Section -->
+                    <section id="about" class="pt-28 pb-24 px-6 relative">
+                        <div class="max-w-4xl mx-auto text-center animate-fade-in-up">
+                            <div class="mb-10 relative inline-block group">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                                <div class="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                                    <img src="${STATIC_DATA.profile.avatar}" alt="Profile" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                                </div>
+                            </div>
+                            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">${STATIC_DATA.profile.name}</h1>
+                            <p class="text-xl md:text-2xl text-slate-600 mb-8 font-light tracking-wide">${STATIC_DATA.profile.title}</p>
+                            <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-loose mb-10">${STATIC_DATA.profile.bio}</p>
+                        </div>
+                    </section>
+
+                    <!-- Experience Section -->
+                    <section id="experience" class="py-24 bg-white/50 backdrop-blur-sm px-6">
+                        <div class="max-w-4xl mx-auto">
+                            <div class="flex items-center space-x-4 mb-12">
+                                <div class="p-3 bg-indigo-600 text-white rounded-xl shadow-lg"><i data-lucide="briefcase" class="w-6 h-6"></i></div>
+                                <h2 class="text-3xl font-bold text-slate-800">个人经历</h2>
+                            </div>
+                            <div class="space-y-16 relative border-l-2 border-indigo-100 ml-3 pl-10 md:pl-16">
+                                ${STATIC_DATA.experience.map((exp, index) => `
+                                    <div class="relative group" style="animation-delay: ${index * 100}ms">
+                                        <span class="absolute -left-[49px] md:-left-[73px] top-1 w-6 h-6 bg-white border-4 border-indigo-600 rounded-full shadow-md group-hover:scale-125 transition-transform duration-300"></span>
+                                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
+                                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                                                <h3 class="text-xl font-bold text-slate-900">${exp.role}</h3>
+                                                <span class="text-xs font-bold tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full uppercase mt-2 sm:mt-0 border border-indigo-100">${exp.period}</span>
+                                            </div>
+                                            <p class="text-lg text-slate-800 mb-3 font-medium flex items-center"><i data-lucide="building-2" class="w-4 h-4 mr-2 text-slate-400"></i>${exp.company}</p>
+                                            <p class="text-slate-500 leading-relaxed">${exp.desc}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Papers Section -->
+                    <section id="papers" class="py-24 px-6 bg-slate-50/80">
+                        <div class="max-w-4xl mx-auto">
+                            <div class="flex items-center space-x-4 mb-12">
+                                <div class="p-3 bg-indigo-600 text-white rounded-xl shadow-lg"><i data-lucide="book-open" class="w-6 h-6"></i></div>
+                                <h2 class="text-3xl font-bold text-slate-800">发表论文</h2>
+                            </div>
+                            <div class="grid gap-6">
+                                ${STATIC_DATA.papers.map(paper => `
+                                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group">
+                                        <div class="flex-1">
+                                            <span class="inline-block px-3 py-1 text-xs font-bold bg-slate-900 text-white rounded-md mb-4 shadow-md">${paper.conference}</span>
+                                            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors leading-tight">${paper.title}</h3>
+                                            <p class="text-slate-500 text-sm leading-loose mb-6 border-l-4 border-slate-100 pl-4">${paper.abstract}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="bg-slate-950 text-slate-500 py-10 text-center text-sm border-t border-slate-900">
+                        <p class="mb-2">© 2025 ${STATIC_DATA.profile.name}. All rights reserved.</p>
+                    </footer>
+                </main>
+            `;
+            app.innerHTML = html;
+        }
+
+        // --- 渲染笔记应用 ---
+        function renderNotesApp() {
+            const selectedNote = state.selectedNoteId ? state.notes.find(n => n.id === state.selectedNoteId) : null;
+            
+            // 侧边栏内容
+            let sidebarContent = '';
+            if (state.loading) {
+                sidebarContent = `<div class="p-8 text-center text-slate-400 flex flex-col items-center"><div class="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mb-2"></div>加载中...</div>`;
+            } else if (state.error) {
+                sidebarContent = `<div class="p-4 text-center text-red-400 text-sm">${state.error}</div>`;
+            } else {
+                sidebarContent = state.notes.map(note => `
+                    <div onclick="selectNote(${note.id})" class="p-4 rounded-xl cursor-pointer transition-all border group relative ${state.selectedNoteId === note.id ? 'bg-indigo-50 border-indigo-200 shadow-md' : 'bg-white border-transparent hover:bg-slate-50 hover:border-slate-200'}">
+                        ${state.selectedNoteId === note.id ? '<div class="absolute left-0 top-4 bottom-4 w-1 bg-indigo-500 rounded-r-full"></div>' : ''}
+                        <h4 class="font-bold mb-1.5 truncate pr-4 ${state.selectedNoteId === note.id ? 'text-indigo-700' : 'text-slate-700'}">${note.title}</h4>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span class="${state.selectedNoteId === note.id ? 'text-indigo-400' : ''}">${note.date}</span>
+                            ${note.image ? '<i data-lucide="image" class="w-3 h-3"></i>' : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 顶部“新建”按钮现在变成跳转到 GitHub
+            const githubNewIssueUrl = `https://github.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repository}/issues/new?labels=${GITHUB_CONFIG.label}`;
+            
+            let contentHtml = '';
+            
+            if (selectedNote) {
+                // 使用 Marked.js 渲染 Markdown
+                const renderedContent = marked.parse(selectedNote.content);
+
+                contentHtml = `
+                    <div class="flex-1 overflow-y-auto p-0 md:p-8 w-full animate-fade-in-up">
+                        <div class="max-w-4xl mx-auto bg-white min-h-full md:rounded-3xl shadow-xl border border-slate-100 overflow-hidden pb-10">
+                            ${selectedNote.image ? `<div class="w-full h-72 md:h-96 overflow-hidden relative group"><img src="${selectedNote.image}" class="w-full h-full object-cover"></div>` : ''}
+                            <div class="px-8 md:px-16 py-10">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div class="flex items-center space-x-3 text-indigo-600 font-medium text-sm bg-indigo-50 w-fit px-4 py-1.5 rounded-full">
+                                        <i data-lucide="calendar" class="w-4 h-4"></i><span>${selectedNote.date}</span>
+                                    </div>
+                                    <a href="${selectedNote.html_url}" target="_blank" class="text-slate-400 hover:text-indigo-600 transition-colors flex items-center text-sm">
+                                        <i data-lucide="github" class="w-4 h-4 mr-1"></i> 在 GitHub 上查看
+                                    </a>
+                                </div>
+                                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-10 leading-tight tracking-tight">${selectedNote.title}</h1>
+                                
+                                <!-- 正文区域 (Prose 样式) -->
+                                <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-8 border-b border-slate-100 pb-10">
+                                    ${renderedContent}
+                                </div>
+
+                                <!-- 互动引导 -->
+                                <div class="mt-10 text-center">
+                                    <a href="${selectedNote.html_url}" target="_blank" class="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-xl hover:bg-indigo-600 transition-colors font-bold shadow-lg">
+                                        <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> 
+                                        参与评论 (${selectedNote.comments_count || 0})
+                                    </a>
+                                    <p class="mt-4 text-sm text-slate-400">评论功能由 GitHub Issues 提供支持</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // 空状态
+                contentHtml = `
+                    <div class="flex-1 flex flex-col items-center justify-center text-slate-400 animate-fade-in-up">
+                        <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                            <i data-lucide="coffee" class="w-10 h-10 text-slate-300"></i>
+                        </div>
+                        <p class="text-xl font-medium text-slate-500">请从左侧选择一篇笔记</p>
+                    </div>
+                `;
+            }
+
+            const html = `
+                <div class="flex h-screen bg-slate-100 overflow-hidden">
+                    <div class="w-80 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-xl">
+                        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-white">
+                            <button onclick="navigateTo('home')" class="text-slate-500 hover:text-indigo-600 transition-colors flex items-center text-sm font-bold group">
+                                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-2 group-hover:bg-indigo-50 transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i></div> 返回主页
+                            </button>
+                        </div>
+                        
+                        <!-- 真实的“新建”按钮：跳转到 GitHub -->
+                        <div class="p-5">
+                            <a href="${githubNewIssueUrl}" target="_blank" class="w-full bg-slate-900 hover:bg-indigo-600 text-white py-3.5 rounded-xl flex items-center justify-center font-bold transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-0.5">
+                                <i data-lucide="plus" class="w-5 h-5 mr-2"></i> 写新笔记
+                            </a>
+                            <p class="text-xs text-center text-slate-400 mt-2">将在 GitHub Issues 中创建</p>
+                        </div>
+
+                        <div class="flex-1 overflow-y-auto px-3 space-y-2 pb-4">
+                            ${sidebarContent}
+                        </div>
+                    </div>
+                    <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100 relative">${contentHtml}</div>
+                </div>
+            `;
+            app.innerHTML = html;
+        }
+
+        // ================= 交互逻辑 =================
+        function navigateTo(target) { 
+            state.view = target; 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            if (target === 'notes' && state.notes.length === 0) {
+                fetchNotes(); // 进入笔记页面时才加载数据
+            } else {
+                render(); 
+            }
+        }
+
+        function scrollToId(id) {
+            if (state.view !== 'home') { 
+                state.view = 'home'; 
+                render(); 
+                setTimeout(() => { const el = document.getElementById(id); if(el) el.scrollIntoView({ behavior: 'smooth' }); }, 100); 
+            } else { 
+                const el = document.getElementById(id); 
+                if(el) el.scrollIntoView({ behavior: 'smooth' }); 
+            }
+        }
+
+        function selectNote(id) { 
+            state.selectedNoteId = id; 
+            render(); 
+        }
+
+        // 初始化
+        render();
+        window.onpopstate = (event) => { if (state.view === 'notes') { state.view = 'home'; render(); } };
+    </script>
+</body>
+</html>
