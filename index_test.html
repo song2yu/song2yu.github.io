@@ -1,97 +1,478 @@
-// =================================================================
-// 📝 个人主页数据配置中心
-// 修改这里的内容，网页会自动更新
-// =================================================================
-
-window.BLOG_DATA = {
-    // === 1. 个人简介 ===
-    profile: {
-        name: "张远山",
-        title: "人工智能研究员 / 全栈开发者",
-        bio: "致力于探索人机交互的未来，热爱开源社区。在深度学习与前端工程化领域有深入研究。喜欢用代码构建美好的事物。",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix", // 头像链接
-        email: "contact@example.com",
-        github: "#",
-        linkedin: "#"
-    },
-
-    // === 2. 个人经历 ===
-    experience: [
-        {
-            role: "高级算法工程师",
-            company: "未来科技研究院",
-            period: "2021 - 至今",
-            desc: "负责大语言模型微调与推理加速，主导了两个开源项目的落地，提升了30%的系统响应速度。"
-        },
-        {
-            role: "全栈开发工程师",
-            company: "创新数字工坊",
-            period: "2019 - 2021",
-            desc: "独立负责核心SaaS产品的前端架构重构，引入React Hooks与TypeScript，显著提升代码可维护性。"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songsong Yu - Homepage</title>
+    <!-- 样式库和图标库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                    },
+                    animation: { 'fade-in-up': 'fadeInUp 0.8s ease-out forwards' },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    }
+                }
+            }
         }
-    ],
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .prose p { margin-bottom: 1.5em; line-height: 1.8; }
+        .prose img { border-radius: 8px; margin: 10px 0; width: 100%; object-fit: cover; }
+        /* 强调文字样式 */
+        strong { color: #3B82F6; font-weight: 600; }
+    </style>
+    
+    <!-- 核心：引入数据文件 -->
+    <script src="data.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700">
 
-    // === 3. 发表论文 ===
-    papers: [
-        {
-            title: "Optimizing Transformer Architectures for Edge Devices",
-            conference: "CVPR 2023",
-            abstract: "提出了一种新型的轻量级注意力机制，在保持精度的同时减少了40%的计算量...",
-            link: "#"
-        },
-        {
-            title: "A Survey on Human-AI Collaboration Patterns",
-            conference: "CHI 2022",
-            abstract: "系统性回顾了过去五年的协作模式，提出了新的交互范式框架...",
-            link: "#"
+    <div id="app" class="min-h-screen flex flex-col"></div>
+
+    <script>
+        // 1. 初始化检查
+        window.onload = function() {
+            if (typeof window.BLOG_DATA === 'undefined') {
+                document.getElementById('app').innerHTML = `
+                    <div class="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-red-50 text-red-800">
+                        <i data-lucide="alert-circle" class="w-16 h-16 mb-4 text-red-500"></i>
+                        <h1 class="text-2xl font-bold mb-2">Error: data.js not found</h1>
+                        <p>Please ensure index.html and data.js are in the same folder.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+            try {
+                initApp();
+            } catch (error) {
+                console.error("App Init Error:", error);
+                document.getElementById('app').innerHTML = `<div class="p-10 text-red-500">JS Error: ${error.message}</div>`;
+            }
+        };
+
+        // 2. 应用主逻辑
+        function initApp() {
+            const DATA = window.BLOG_DATA;
+            const safeMap = (arr, fn) => (Array.isArray(arr) ? arr.map(fn).join('') : '');
+            
+            // [修改点 1] 尝试从 sessionStorage 读取上次的状态，如果并没有则默认显示 home
+            // 这样刷新后，如果你在笔记页，它依然会停留在笔记页，而不是跳回主页
+            const savedState = JSON.parse(sessionStorage.getItem('appState'));
+            const state = savedState || { view: 'home', selectedNoteId: null };
+            
+            const app = document.getElementById('app');
+
+            function render() {
+                app.innerHTML = '';
+                if (state.view === 'home') renderHome();
+                else renderNotesApp();
+                lucide.createIcons();
+                document.title = `${DATA.profile.name} - Homepage`;
+                
+                // [修改点 2] 移除了之前的 window.scrollTo(0, 0) 强制置顶代码
+                // 现在滚动条位置由后续的恢复逻辑控制
+            }
+
+            // --- 主页视图 ---
+            function renderHome() {
+                const interestBgImages = {
+                    "Photography": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+                    "Hiking": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80",
+                    "Reading": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=800&q=80",
+                    "Guitar": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=800&q=80",
+                    "Music": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80",
+                    "Cooking": "https://images.unsplash.com/photo-1556910103-1c02745a30bf?auto=format&fit=crop&w=800&q=80",
+                    "default": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80"
+                };
+
+                app.innerHTML = `
+                    <!-- 1. Hero Header -->
+                    <header class="relative h-[500px] w-full overflow-hidden">
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://design.gemcoder.com/staticResource/echoAiSystemImages/cdd16e8ff9ac7652fd7a52c76802013f.png" 
+                                 alt="Landscape" 
+                                 class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70"></div>
+                        </div>
+
+                        <div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-16 md:pb-20">
+                            <div class="flex flex-col md:flex-row items-center md:items-end text-center md:text-left animate-fade-in-up">
+                                <div class="mb-6 md:mb-0 md:mr-10 flex-shrink-0">
+                                    <div class="w-32 h-32 md:w-44 md:h-44 rounded-full p-1 bg-white/20 backdrop-blur-sm">
+                                        <img src="${DATA.profile.avatar}" 
+                                             alt="Profile" 
+                                             class="w-full h-full object-cover rounded-full border-4 border-white shadow-2xl" 
+                                             onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Songsong'" />
+                                    </div>
+                                </div>
+                                
+                                <div class="text-white pb-2">
+                                    <h1 class="text-4xl md:text-5xl font-bold mb-3 text-shadow tracking-tight">
+                                        ${DATA.profile.name}
+                                    </h1>
+                                    <p class="text-lg md:text-xl text-gray-200 mb-6 font-light max-w-2xl text-shadow opacity-90">
+                                        ${DATA.profile.title}
+                                    </p>
+                                    
+                                    <div class="flex justify-center md:justify-start space-x-4">
+                                        ${safeMap(DATA.profile.socials, social => {
+                                            const isImage = social.icon.includes('.');
+                                            const commonClasses = "w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white hover:text-indigo-600 text-white backdrop-blur-sm transition-all duration-300 border border-white/30 shadow-lg overflow-hidden";
+                                            const content = isImage 
+                                                ? `<img src="${social.icon}" alt="${social.name}" class="w-full h-full object-cover">`
+                                                : `<i data-lucide="${social.icon}" class="w-5 h-5"></i>`;
+                                            return `<a href="${social.url}" target="_blank" class="${commonClasses}" title="${social.name}">${content}</a>`
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- 2. 导航栏 -->
+                    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+                        <div class="container mx-auto px-6">
+                            <div class="flex justify-center md:justify-between items-center py-4">
+                                <div class="hidden md:block font-bold text-lg text-slate-800 opacity-0 w-0 overflow-hidden transition-all duration-300 transform -translate-x-4">
+                                </div>
+                                
+                                <ul class="flex items-center space-x-1 md:space-x-8 text-xl font-medium text-slate-600">
+                                    <li><a href="#" onclick="scrollToId('about'); return false;" class="px-3 py-2 hover:text-indigo-600 transition-colors">About</a></li>
+                                    <li><a href="#" onclick="scrollToId('education'); return false;" class="px-3 py-2 hover:text-indigo-600 transition-colors">Education</a></li>
+                                    <li><a href="#" onclick="scrollToId('experience'); return false;" class="px-3 py-2 hover:text-indigo-600 transition-colors">Experience</a></li>
+                                    <li><a href="#" onclick="scrollToId('papers'); return false;" class="px-3 py-2 hover:text-indigo-600 transition-colors">Publications</a></li>
+                                    <li><a href="#" onclick="scrollToId('interests'); return false;" class="px-3 py-2 hover:text-indigo-600 transition-colors">Interests</a></li>
+                                </ul>
+
+                                <button onclick="navigateTo('notes')" class="hidden md:flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-900 text-white hover:bg-indigo-600 hover:shadow-lg transition-all duration-300 text-xl font-bold transform hover:-translate-y-0.5 ml-4">
+                                    <i data-lucide="book-open" class="w-3 h-3"></i> <span>Notes</span>
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <!-- 3. 主要内容区域 -->
+                    <main class="flex-grow container mx-auto px-6 py-12 max-w-5xl">
+                        
+                        <!-- Biography Section -->
+                        <section id="about" class="mb-20 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">About Me</h2>
+                            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="prose prose-lg text-slate-600 leading-loose max-w-none">
+                                    ${DATA.profile.bio}
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Education Section -->
+                        <section id="education" class="mb-20 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Education</h2>
+                            <div class="space-y-8 relative border-l-2 border-indigo-100 ml-3 pl-8 md:pl-12">
+                                ${safeMap(DATA.education, edu => `
+                                    <div class="relative group">
+                                        <span class="absolute -left-[39px] md:-left-[55px] top-1.5 w-5 h-5 bg-white border-4 border-indigo-600 rounded-full shadow-md group-hover:scale-110 transition-transform"></span>
+                                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+                                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                                <h3 class="text-xl font-bold text-slate-900">${edu.degree}</h3>
+                                                <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit mt-2 md:mt-0">${edu.period}</span>
+                                            </div>
+                                            <p class="text-lg text-slate-700 font-medium mb-3 flex items-center"><i data-lucide="school" class="w-4 h-4 mr-2 text-slate-400"></i>${edu.school}</p>
+                                            ${edu.desc ? `<div class="text-slate-500 text-sm leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-100">${edu.desc}</div>` : ''}
+                                        </div>
+                                    </div>
+                                `)}
+                            </div>
+                        </section>
+
+                        <!-- Experience Section -->
+                        <section id="experience" class="mb-20 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Experience</h2>
+                            <div class="grid gap-6">
+                                ${safeMap(DATA.experience, exp => `
+                                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 flex flex-col md:flex-row gap-5 items-start group">
+                                        <div class="flex-shrink-0 w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                            <i data-lucide="building-2" class="w-7 h-7"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                                                <h3 class="text-lg font-bold text-slate-900">${exp.role}</h3>
+                                                <span class="text-xs text-slate-500 font-mono bg-slate-100 px-2 py-1 rounded mt-1 md:mt-0">${exp.period}</span>
+                                            </div>
+                                            <p class="text-slate-700 font-medium mb-2">${exp.company}</p>
+                                            <p class="text-slate-500 text-sm leading-relaxed">${exp.desc}</p>
+                                        </div>
+                                    </div>
+                                `)}
+                            </div>
+                        </section>
+
+                        <!-- Publications Section -->
+                        <section id="papers" class="mb-20 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Publications</h2>
+                            <div class="space-y-6">
+                                ${safeMap(DATA.papers, paper => `
+                                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group relative overflow-hidden">
+                                        <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                                        ${paper.image ? `<img src="${paper.image}" class="w-200 h-160 object-cover mb-4 rounded" alt="${paper.title || 'paper thumbnail'}">` : ''}
+                                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors leading-snug">
+                                            ${paper.title}
+                                        </h3>
+                                        <p class="text-sm text-slate-600 mb-3 italic">${paper.authors}</p>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="inline-block px-3 py-1 text-xs font-bold bg-slate-900 text-white rounded-md shadow-sm">
+                                                ${paper.conference}
+                                            </span>
+                                        </div>
+                                        <p class="text-slate-500 text-sm leading-loose mb-6 border-l-4 border-slate-100 pl-4">
+                                            ${paper.abstract}
+                                        </p>
+                                        <div class="flex flex-wrap gap-3">
+                                            ${safeMap(paper.links, link => `
+                                                <a href="${link.url}" target="_blank" class="inline-flex items-center px-3 py-1.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors border border-indigo-100">
+                                                    <i data-lucide="${link.icon || 'external-link'}" class="w-3 h-3 mr-1.5"></i>
+                                                    ${link.name}
+                                                </a>
+                                            `)}
+                                        </div>
+                                    </div>
+                                `)}
+                            </div>
+                        </section>
+
+                        <!-- Latest Notes Section -->
+                        <section id="latest-notes" class="mb-20 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Latest Notes</h2>
+                            <div class="grid gap-6 md:grid-cols-2">
+                                ${safeMap((DATA.notes || []).slice(0, 2), note => `
+                                    <div onclick="openNote(${note.id})" class="bg-white rounded-2xl p-6 cursor-pointer hover:shadow-xl transition-all duration-300 border border-slate-100 group flex flex-col h-full hover:-translate-y-1">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-xs font-bold text-indigo-500 bg-indigo-50 px-2 py-1 rounded">${note.date}</span>
+                                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-indigo-600 transition-colors"></i>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors line-clamp-1">${note.title}</h3>
+                                        <p class="text-slate-500 text-sm line-clamp-3 leading-relaxed flex-grow mb-4">
+                                            ${note.content.replace(/<[^>]+>/g, '').substring(0, 120)}...
+                                        </p>
+                                        
+                                        <!-- Read More 按钮 -->
+                                        <div class="mt-auto">
+                                            <button class="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg text-sm font-bold hover:bg-indigo-100 transition-colors w-fit group-hover:bg-indigo-600 group-hover:text-white">
+                                                Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                `)}
+                            </div>
+                            <div class="mt-8 text-center md:hidden">
+                                <button onclick="navigateTo('notes')" class="px-6 py-3 bg-slate-900 text-white rounded-full text-sm font-bold">View All Notes</button>
+                            </div>
+                            <div class="mt-8 text-center">
+                                <button onclick="navigateTo('notes')" class="text-sm font-bold text-indigo-600 hover:underline">View All Notes →</button>
+                            </div>
+                        </section>
+
+                        <!-- Interests Section -->
+                        <section id="interests" class="mb-12 scroll-mt-24">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Interests</h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Technical Interests -->
+                                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                            <i data-lucide="laptop-2" class="w-6 h-6 text-indigo-600"></i>
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-gray-800">Technical Interests</h3>
+                                    </div>
+                                    <ul class="space-y-3 text-gray-700 pl-2">
+                                        <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 mr-3"></i><span>Spatial Reasoning & Generation</span></li>
+                                        <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 mr-3"></i><span>Unified Multi-modal Models</span></li>
+                                        <li class="flex items-start"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 mr-3"></i><span>Depth Estimation & Completion</span></li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Personal Interests -->
+                                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                            <i data-lucide="user" class="w-6 h-6 text-blue-600"></i>
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-gray-800">Personal Interests</h3>
+                                    </div>
+                                    <ul class="space-y-3 text-gray-700 pl-2">
+                                        <li class="flex items-start"><i data-lucide="heart" class="w-5 h-5 text-blue-500 mt-0.5 mr-3"></i><span>Reading</span></li>
+                                        <li class="flex items-start"><i data-lucide="music" class="w-5 h-5 text-blue-500 mt-0.5 mr-3"></i><span>Guitar & Rock & Folk music</span></li>
+                                        <li class="flex items-start"><i data-lucide="activity" class="w-5 h-5 text-blue-500 mt-0.5 mr-3"></i><span>Running & Exercising</span></li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Media Grid -->
+                                <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80" alt="Music" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                                        <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Music</span>
+                                    </div>
+                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                        <video src="fig/gym.mp4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" autoplay loop muted playsinline></video>
+                                        <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Gym</span>
+                                    </div>
+                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Photography" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Photography</span>
+                                    </div>
+                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                        <img src="https://design.gemcoder.com/staticResource/echoAiSystemImages/530b9b65e36553b3f4dfc7cfc83a4128.png" alt="Food Tasting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Food Tasting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <footer class="bg-slate-900 text-slate-400 py-4 text-center text-sm rounded-2xl mb-6">
+                            <p class="mb-2">© 2025 ${DATA.profile.name}. All rights reserved.</p>
+                        </footer>
+                    </main>
+                `;
+            }
+
+            // --- 笔记视图 (保持不变) ---
+            function renderNotesApp() {
+                const selectedNote = state.selectedNoteId ? (DATA.notes || []).find(n => n.id === state.selectedNoteId) : null;
+                
+                const sidebarList = safeMap(DATA.notes, note => `
+                    <div onclick="selectNote(${note.id})" class="p-4 rounded-xl cursor-pointer transition-all border group relative ${state.selectedNoteId === note.id ? 'bg-indigo-50 border-indigo-200 shadow-md' : 'bg-white border-transparent hover:bg-slate-50 hover:border-slate-200'}">
+                        ${state.selectedNoteId === note.id ? '<div class="absolute left-0 top-4 bottom-4 w-1 bg-indigo-500 rounded-r-full"></div>' : ''}
+                        <h4 class="font-bold mb-1.5 truncate pr-4 ${state.selectedNoteId === note.id ? 'text-indigo-700' : 'text-slate-700'}">${note.title}</h4>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span class="${state.selectedNoteId === note.id ? 'text-indigo-400' : ''}">${note.date}</span>
+                            ${note.image ? '<i data-lucide="image" class="w-3 h-3"></i>' : ''}
+                        </div>
+                    </div>
+                `);
+
+                let mainContent = '';
+                if (selectedNote) {
+                    mainContent = `
+                        <div class="flex-1 overflow-y-auto p-0 md:p-8 w-full animate-fade-in-up">
+                            <div class="max-w-4xl mx-auto bg-white min-h-full md:rounded-3xl shadow-xl border border-slate-100 overflow-hidden pb-10">
+                                ${selectedNote.image ? `<div class="w-full h-72 md:h-96 overflow-hidden relative group"><img src="${selectedNote.image}" class="w-full h-full object-cover"></div>` : ''}
+                                <div class="px-8 md:px-16 py-10">
+                                    <div class="flex items-center space-x-3 text-indigo-600 font-medium text-sm mb-6 bg-indigo-50 w-fit px-4 py-1.5 rounded-full">
+                                        <i data-lucide="calendar" class="w-4 h-4"></i><span>${selectedNote.date}</span>
+                                    </div>
+                                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-10 leading-tight tracking-tight">${selectedNote.title}</h1>
+                                    <div class="prose prose-lg prose-slate text-slate-600 leading-8 whitespace-pre-wrap pb-10">
+                                        ${selectedNote.content}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    mainContent = `
+                            <div class="flex-1 flex flex-col items-center justify-center text-slate-400 animate-fade-in-up">
+                                
+
+
+                                <div class="relative w-full flex-1 rounded-2xl overflow-hidden shadow-xl">
+                                    
+                                    <img src="fig/background.png" 
+                                        alt="Landscape" 
+                                        class="absolute inset-0 w-full h-full object-cover blur-sm scale-105" />
+                                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 p-4">
+                                        <p class="text-[42px] font-medium text-white drop-shadow-lg text-center mb-2">Roaming with the Spirit of the Universe</p>
+                                        <p class="text-[42px] font-medium text-white drop-shadow-lg text-center">与天地精神同往来</p>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                    `;
+                }
+
+                app.innerHTML = `
+                    <div class="flex h-screen bg-slate-100 overflow-hidden">
+                        <div class="w-80 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-xl">
+                            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-white">
+                                <button onclick="navigateTo('home')" class="text-slate-500 hover:text-indigo-600 transition-colors flex items-center text-sm font-bold group">
+                                    <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-2 group-hover:bg-indigo-50 transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i></div> Back
+                                </button>
+                            </div>
+                            <div class="flex-1 overflow-y-auto px-3 space-y-2 pb-4 pt-4">
+                                ${sidebarList}
+                            </div>
+                        </div>
+                        <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100 relative">
+                            ${mainContent}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // [修改点 3] 恢复位置逻辑
+            // 渲染完成后，立刻检查是否有保存的滚动位置
+            const savedScroll = sessionStorage.getItem('scrollPosition');
+            if (savedScroll) {
+                // 必须给一点点延时，等待图片和 DOM 渲染完成，否则滚动可能不准确
+                setTimeout(() => {
+                    window.scrollTo(0, parseInt(savedScroll));
+                }, 10);
+            }
+
+            // [修改点 4] 自动保存位置
+            // 在页面刷新或关闭前，记录当前滚动条位置和状态
+            window.onbeforeunload = function() {
+                sessionStorage.setItem('appState', JSON.stringify(state));
+                sessionStorage.setItem('scrollPosition', window.scrollY);
+            };
+
+            // 全局交互函数
+            window.navigateTo = function(target) { 
+                state.view = target; 
+                state.selectedNoteId = null;
+                // 切换页面时，我们通常希望回到顶部，所以这里主动置顶
+                // 并清除保存的滚动位置，以免干扰新页面的体验
+                window.scrollTo(0, 0);
+                render(); 
+            };
+            window.openNote = function(id) {
+                state.selectedNoteId = id;
+                state.view = 'notes';
+                window.scrollTo(0, 0);
+                render();
+            };
+            window.scrollToId = function(id) {
+                if (state.view !== 'home') { 
+                    state.view = 'home'; 
+                    render(); 
+                    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100); 
+                } else { 
+                    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); 
+                }
+            };
+            window.selectNote = function(id) { 
+                state.selectedNoteId = id; 
+                render(); 
+            };
+
+            render();
         }
-    ],
-
-    // === 4. 兴趣爱好 (图标使用 Lucide 图标名) ===
-    interests: [
-        { name: "摄影", icon: "camera" },
-        { name: "徒步", icon: "mountain" },
-        { name: "科幻阅读", icon: "book" },
-        { name: "咖啡", icon: "coffee" }
-    ],
-
-    // === 5. 个人笔记 (在这里添加新笔记！) ===
-    // 提示：content 支持 HTML 标签，例如换行请用 <br>，加粗用 <b>内容</b>
-    notes: [
-        {
-            id: 3, // 必须是唯一的数字
-            title: "如何配置这个个人主页",
-            date: "2025-01-05",
-            image: "", // 如果没有图片，留空即可 ""
-            content: `
-                这是最新的笔记系统。
-                <br><br>
-                <b>如何使用：</b><br>
-                1. 打开 <code>data.js</code> 文件。<br>
-                2. 找到 <code>notes</code> 数组。<br>
-                3. 复制一段 <code>{...}</code> 格式的代码并修改内容。<br>
-                4. 保存文件，刷新网页即可看到更新。
-            `
-        },
-        {
-            id: 1,
-            title: "关于React性能优化的思考",
-            date: "2023-10-15",
-            image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80",
-            content: `
-                最近在重构项目时发现，合理使用 useMemo 和 useCallback 对于复杂列表的渲染性能至关重要。<br><br>
-                尤其是在配合 React.memo 使用时，需要注意引用的稳定性。另外，对于大型应用，状态管理的粒度控制也是一个值得深究的话题。
-            `
-        },
-        {
-            id: 2,
-            title: "秋日京都游记",
-            date: "2023-11-02",
-            image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
-            content: `
-                清水寺的红叶即使在黄昏也别有一番风味。这次旅行带给了我很多关于色彩搭配的灵感。<br><br>
-                传统的配色方案往往能给现代UI设计带来意想不到的启发。
-            `
-        }
-    ]
-};
+    </script>
+</body>
+</html>
