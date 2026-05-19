@@ -16,9 +16,9 @@ window.BLOG_DATA = {
         
         // 社交链接
         socials: [
-            { name: "GitHub", url: "https://github.com/song2yu", icon: "code-2" },
+            { name: "GitHub", url: "https://github.com/song2yu", icon: "fig/github.svg" },
             { name: "Email", url: "songsongyu203@163.com", icon: "mail" },
-            { name: "X", url: "https://x.com/brucesong2yu", icon: "twitter" },
+            { name: "X", url: "https://x.com/brucesong2yu", icon: "fig/x.svg" },
             { name: "CSDN", url: "https://blog.csdn.net/weixin_46257458?type=blog", icon: "fig/csdn.png" }, 
             // { name: "RedNote", url: "link_xiaohongshu.png", icon: "xiaohongshu_red.png" } // 使用通用图标代替
         ]
@@ -60,7 +60,7 @@ window.BLOG_DATA = {
             image: "fig/sgt.png",
             links: [
                 { name: "PDF", url: "https://arxiv.org/pdf/2605.18714", icon: "file-text" },
-                { name: "Code", url: "https://github.com/song2yu/SGT", icon: "code-2" },
+                { name: "Code", url: "https://github.com/song2yu/SGT", icon: "fig/github.svg" },
                 { name: "Homepage", url: "https://song2yu.github.io/SGT/", icon: "globe" }
             ]
         },
@@ -72,7 +72,7 @@ window.BLOG_DATA = {
             image:"fig/radar2.6_calibri.png",
             links: [
                 { name: "PDF", url: "https://arxiv.org/pdf/2509.18905", icon: "file-text" },
-                { name: "Code", url: "https://github.com/song2yu/SIBench-VSR", icon: "code-2" },
+                { name: "Code", url: "https://github.com/song2yu/SIBench-VSR", icon: "fig/github.svg" },
                 { name: "Leaderboard", url: "https://sibench.github.io/Awesome-Visual-Spatial-Reasoning/", icon: "trophy" },
                 { name: "Awesome-List", url: "https://github.com/SIBench/Awesome-Visual-Spatial-Reasoning", icon: "star" }
             ]
@@ -86,7 +86,7 @@ window.BLOG_DATA = {
             links: [
                 { name: "PDF", url: "https://arxiv.org/pdf/2503.22262", icon: "file-text" },
                 { name: "Homepage", url: "https://mono2stereo-bench.github.io/", icon: "globe" },
-                { name: "Code", url: "https://github.com/song2yu/Mono2Stereo", icon: "code-2" }
+                { name: "Code", url: "https://github.com/song2yu/Mono2Stereo", icon: "fig/github.svg" }
             ]
         },
         {
@@ -97,7 +97,7 @@ window.BLOG_DATA = {
             image:"",
             links: [
                 { name: "PDF", url: "https://ojs.aaai.org/index.php/AAAI/article/view/28506", icon: "file-text" },
-                { name: "Code", url: "https://github.com/YUsong360/DME-Unveilingthe-bias", icon: "code-2" }
+                { name: "Code", url: "https://github.com/YUsong360/DME-Unveilingthe-bias", icon: "fig/github.svg" }
             ]
         },
         {
@@ -108,7 +108,7 @@ window.BLOG_DATA = {
             image:"",
             links: [
                 { name: "PDF", url: "https://dl.acm.org/doi/pdf/10.1145/3664647.3680926", icon: "file-text" },
-                { name: "Code", url: "https://github.com/Cyyzpoi/SelM", icon: "code-2" }
+                { name: "Code", url: "https://github.com/Cyyzpoi/SelM", icon: "fig/github.svg" }
             ]
         },
         {
