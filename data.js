@@ -4,7 +4,7 @@ window.BLOG_DATA = {
         name: "Songsong Yu -- 于松松",
         title: "Ph.D. Student @ SJTU | Intern @ Tencent ARC Lab",
         // 您的个人简介，支持 Markdown 风格的换行
-        bio: `I am currently a Ph.D. student at the School of Artificial Intelligence, Shanghai Jiao Tong University.
+        bio: `I am currently a Ph.D. student at the School of Artificial Intelligence, Shanghai Jiao Tong University, supervised by Prof. <a href="https://yanwei-li.com/" target="_blank" class="sjtu-link underline">Yanwei Li</a>.
         
         My research focuses on <strong>multimodal models</strong> and <strong>spatial intelligence</strong>. I also have a keen interest in <strong>generation models</strong>.
         
@@ -16,8 +16,9 @@ window.BLOG_DATA = {
         
         // 社交链接
         socials: [
-            { name: "GitHub", url: "https://github.com/song2yu", icon: "github" },
+            { name: "GitHub", url: "https://github.com/song2yu", icon: "code-2" },
             { name: "Email", url: "songsongyu203@163.com", icon: "mail" },
+            { name: "X", url: "https://x.com/brucesong2yu", icon: "twitter" },
             { name: "CSDN", url: "https://blog.csdn.net/weixin_46257458?type=blog", icon: "fig/csdn.png" }, 
             // { name: "RedNote", url: "link_xiaohongshu.png", icon: "xiaohongshu_red.png" } // 使用通用图标代替
         ]
@@ -52,6 +53,18 @@ window.BLOG_DATA = {
     // === 4. 发表论文 (Publications) ===
     papers: [
         {
+            title: "Semantic Generative Tuning for Unified Multimodal Models",
+            authors: "Songsong Yu, Yunxin Chen, Ying Shan, Yanwei Li.",
+            conference: "Arxiv Pre-print, 2026",
+            abstract: "Proposes Semantic Generative Tuning (SGT), which adopts image segmentation as a generative post-training objective to bridge visual understanding and generation at the semantic level, yielding consistent gains on BAGEL and OmniGen2 across CV-Bench and GenEval.",
+            image: "fig/sgt.png",
+            links: [
+                { name: "PDF", url: "https://arxiv.org/pdf/2605.18714", icon: "file-text" },
+                { name: "Code", url: "https://github.com/song2yu/SGT", icon: "code-2" },
+                { name: "Homepage", url: "https://song2yu.github.io/SGT/", icon: "globe" }
+            ]
+        },
+        {
             title: "How Far are VLMs from Visual Spatial Intelligence? A Benchmark-Driven Perspective",
             authors: "Songsong Yu, Yuxin Chen, Hao Ju, et al.",
             conference: "Arxiv Pre-print, 2025",
@@ -59,7 +72,7 @@ window.BLOG_DATA = {
             image:"fig/radar2.6_calibri.png",
             links: [
                 { name: "PDF", url: "https://arxiv.org/pdf/2509.18905", icon: "file-text" },
-                { name: "Code", url: "https://github.com/song2yu/SIBench-VSR", icon: "github" },
+                { name: "Code", url: "https://github.com/song2yu/SIBench-VSR", icon: "code-2" },
                 { name: "Leaderboard", url: "https://sibench.github.io/Awesome-Visual-Spatial-Reasoning/", icon: "trophy" },
                 { name: "Awesome-List", url: "https://github.com/SIBench/Awesome-Visual-Spatial-Reasoning", icon: "star" }
             ]
@@ -73,7 +86,7 @@ window.BLOG_DATA = {
             links: [
                 { name: "PDF", url: "https://arxiv.org/pdf/2503.22262", icon: "file-text" },
                 { name: "Homepage", url: "https://mono2stereo-bench.github.io/", icon: "globe" },
-                { name: "Code", url: "https://github.com/song2yu/Mono2Stereo", icon: "github" }
+                { name: "Code", url: "https://github.com/song2yu/Mono2Stereo", icon: "code-2" }
             ]
         },
         {
@@ -84,7 +97,7 @@ window.BLOG_DATA = {
             image:"",
             links: [
                 { name: "PDF", url: "https://ojs.aaai.org/index.php/AAAI/article/view/28506", icon: "file-text" },
-                { name: "Code", url: "https://github.com/YUsong360/DME-Unveilingthe-bias", icon: "github" }
+                { name: "Code", url: "https://github.com/YUsong360/DME-Unveilingthe-bias", icon: "code-2" }
             ]
         },
         {
@@ -95,7 +108,7 @@ window.BLOG_DATA = {
             image:"",
             links: [
                 { name: "PDF", url: "https://dl.acm.org/doi/pdf/10.1145/3664647.3680926", icon: "file-text" },
-                { name: "Code", url: "https://github.com/Cyyzpoi/SelM", icon: "github" }
+                { name: "Code", url: "https://github.com/Cyyzpoi/SelM", icon: "code-2" }
             ]
         },
         {
