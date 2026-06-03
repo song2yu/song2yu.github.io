@@ -2,7 +2,7 @@ window.BLOG_DATA = {
     // === 1. 个人简介 (Profile) ===
     profile: {
         name: "Songsong Yu -- 于松松",
-        title: "Ph.D. Student @ SJTU | Intern @ Tencent ARC Lab",
+        title: "Ph.D. Student @ SJTU | Intern @ Joy Future Academy",
         // 您的个人简介，支持 Markdown 风格的换行
         bio: `I am currently a Ph.D. student at the School of Artificial Intelligence, Shanghai Jiao Tong University, supervised by Prof. <a href="https://yanwei-li.com/" target="_blank" class="sjtu-link underline">Yanwei Li</a>.
         
@@ -44,9 +44,15 @@ window.BLOG_DATA = {
     experience: [
         {
             role: "Research Intern",
+            company: "JD, Joy Future Academy",
+            period: "2026.6-Now",
+            desc: "Focusing on world action model."
+        },
+        {
+            role: "Research Intern",
             company: "Tencent PCG, ARC LAB",
-            period: "2024.7-Present",
-            desc: "Focusing on spatial intelligence and generative models."
+            period: "2024.7-2026.5",
+            desc: `Focusing on spatial intelligence and generative models, supervised by Dr. <a href="https://xxx.com" target="_blank" class="text-indigo-600 underline">Yuxin Chen</a>.`
         }
     ],
 
@@ -54,7 +60,7 @@ window.BLOG_DATA = {
     papers: [
         {
             title: "Semantic Generative Tuning for Unified Multimodal Models",
-            authors: "Songsong Yu, Yunxin Chen, Ying Shan, Yanwei Li.",
+            authors: "Songsong Yu, Yuxin Chen, Ying Shan, Yanwei Li.",
             conference: "Arxiv Pre-print, 2026",
             abstract: "Proposes Semantic Generative Tuning (SGT), which adopts image segmentation as a generative post-training objective to bridge visual understanding and generation at the semantic level, yielding consistent gains on BAGEL and OmniGen2 across CV-Bench and GenEval.",
             image: "fig/sgt.png",
@@ -175,6 +181,22 @@ window.BLOG_DATA = {
             相传先祖伏羲持圆规，矩尺，通过圭表测影的方式发现一年大约是360多天，为计数方便，并取为360这样一个整数。其中，“规”这样一个测量仪器用于测量太阳运行的轨迹，也就是黄道，而“矩”则是用来测量日影的长短。古人的宇宙观认为天圆地方，因而也有了“不以规矩，不成方圆”的说法
             
             --------------12.7
+
+            时间略久。来补全一下。
+
+            女娲补天。当时人们测定的历法的方式就是对太阳以及月亮的观测，由于观测工具较为落后，随着时间流逝，误差逐渐累积，导致历法的准确性逐渐下降。我们已无从知晓女娲补天的真实经过，但是如今一个比较合理的解释是更新和补全历法，在规定的时间里增加闰月，以保证历法的准确性。
+
+            对于这样的叙事我其实有一些私心，我会觉得中国古代先贤其实是跨时代领先的。比如历法，西方是没有农历这样一个概念的。一个常识是，月亮每逢农历十五就会圆满一次。
+            中国古代先人为什么要专门卡这样一个周期呢，如果阳历讲的是太阳的周期律，那么阴历（农历）就是讲的月亮的周期律。其实有一个非常实际的原因，还是回归到农业生产，沿海沿江的地区，人们需要提前预知潮汐的涨落，以便安排捕鱼等活动。我们现代科学会认为，潮汐的涨落是由月亮的引力引起的，但是古代先人并不知道这个原因，他们只是观察到月亮的周期性变化与潮汐的涨落之间存在某种联系，于是便将这个周期性变化与潮汐的涨落联系起来，从而形成了农历。
+            类似的证据还有很多，这里不再赘述。
+            可能有点偏题，但是这也是我为什么喜欢中国古代文化的原因之一。那么多的古典神话，其实说的都是先人在自然中的共生智慧。我们讨论了各种关系，儒家讨论人和社会的关系，道家讨论人与自然的关系，佛家讨论人与自我的关系，因此也有言称‘儒为表，道为骨，佛为心’。
+            
+            最初小学阶段对儒家和道家的阅读较多，但也是泛泛了解。儒家讲的是约束外在操行，克己复礼，曾经我以为的儒家是一门成君子的学问，但后来惊觉这个理解是片面的。尤其是从我的父母身上发觉了这一局限性，他们从物质贫乏的年代生活至今，很多事都求一个问心无愧，遵循所谓的礼节；与此相对的，是一些不怎么讲求严格礼节的父母，他们仍然能够经营好家庭关系，在繁琐的世事中游刃有余。
+            于是我理解了礼最本质的东西是‘爱’，爱人，爱自己。‘己所不欲勿施于人’说的是同理心，是爱人的表现，所谓仁者爱人也是这个意思。关于道家，最初还是受庄子影响较多，因为对于年少的我来说，一个个有趣的小典故更能让我沉浸其中。庄子在我心中的关键词是，自由，逍遥，睿智。但时至今日，我仍然不得其真意，到底怎么才能不使心役于外物呢？我想这对我来说可能是一生的修行。
+            对于佛教的热爱，还是到了大学开始的。好像这么说也算不得确切，因此从小家里有供奉菩萨，也算耳濡目染。只不过从大学到硕士阶段，才开始阅读佛教的一些书籍。印象最深的仍然是六祖慧能，以及大家所熟知的慧能和神秀的两段偈子。初读时候觉得不过抖机灵的诡辩，但后面随着对《金刚经》和《坛经》的了解，才发现这是两种完全不同的修行路径和法门。
+            ‘时时勤拂拭’说的没错，‘本来无一物’说的也没错，这是两个不同的阶段。所谓‘色即是空’说的是不要痴迷于外物的得，而‘空即是色’说的就是逼迫自己不要痴迷，这件事本身也是一种心外之迷失。
+            
+            --------------5.21
             `
             
             
