@@ -1,12 +1,32 @@
 window.BLOG_DATA = {
+    // ╔══════════════════════════════════════════════════════════════╗
+    // ║  Shortcode 命令参考 (可在 content / heading / bio 等文本字段中使用)  ║
+    // ╠══════════════════════════════════════════════════════════════╣
+    // ║  {{h1: 文字}}      → 一级标题 (大号加粗)                        ║
+    // ║  {{h2: 文字}}      → 二级标题 (中号加粗)                        ║
+    // ║  {{h3: 文字}}      → 三级标题 (小号加粗)                        ║
+    // ║  {{b: 文字}}       → 加粗                                    ║
+    // ║  {{i: 文字}}       → 斜体                                    ║
+    // ║  {{quote: 文字}}   → 引用块 (左侧竖线 + 缩进)                  ║
+    // ║  {{center: 文字}}  → 居中文字                                 ║
+    // ║  {{divider}}       → 分割线                                   ║
+    // ║  {{img: 路径}}     → 居中图片 (自动圆角+阴影)                   ║
+    // ║  {{caption: 文字}} → 图片说明 (灰色小字居中)                   ║
+    // ╚══════════════════════════════════════════════════════════════╝
+    //
+    // 示例: content: `{{h1: 我来问道无余说}}，云在青天水在瓶。`
+    //       heading: "{{h2: 我来问道无余说，云在青天水在瓶。}}"
+    // heading 可填写普通文本或标题命令，页面不会生成嵌套标题。
+
     // === 1. 个人简介 (Profile) ===
     profile: {
         name: "Songsong Yu -- 于松松",
+        // heading: "我来问道无余说，云在青天水在瓶。",
         title: "Ph.D. Student @ SJTU | Intern @ Joy Future Academy",
         // 您的个人简介，支持 Markdown 风格的换行
         bio: `I am currently a Ph.D. student at the School of Artificial Intelligence, Shanghai Jiao Tong University, supervised by Prof. <a href="https://yanwei-li.com/" target="_blank" class="sjtu-link underline">Yanwei Li</a>.
         
-        My research focuses on <strong>multimodal models</strong> and <strong>spatial intelligence</strong>. I also have a keen interest in <strong>generation models</strong>.
+        My research focuses on {{b: multimodal models}} and {{b: spatial intelligence}}. I also have a keen interest in {{b: generation models}}.
         
         Previously, I obtained my Master's degree from Dalian University of Technology, supervised by Prof.<a href="https://scholar.google.com/citations?user=D3nE0agAAAAJ&hl=zh-CN&oi=ao" target="_blank" class="sjtu-link underline">Huchuan Lu</a> 
         and Prof. <a href="https://scholar.google.com/citations?user=EfTwkXMolscC&hl=zh-CN&oi=ao" target="_blank" class="sjtu-link underline">Lijun Wang</a>.`,
@@ -59,9 +79,21 @@ window.BLOG_DATA = {
     // === 4. 发表论文 (Publications) ===
     papers: [
         {
+            title: "ZimaBlue: Evolving Generalizable World Action Models through Scalable Video Pre-training",
+            authors: "Xionghao Wu, Yijun Yang, Shiyang Zhou, Haoze Sun, Jianhui Liu, Songsong Yu, Jiyao Zhang, Wenbo Li",
+            conference: "Tech Report, 2026",
+            abstract: "ZimaBlue learns generalizable world action models from large-scale egocentric video via a three-stage curriculum and a slow-fast architecture, substantially improving zero-shot robotic manipulation.",
+            image: "fig/ZimaBlue.png",
+            links: [
+                { name: "PDF", url: "https://arxiv.org/pdf/2609.00188", icon: "file-text" },
+                { name: "Code", url: "https://github.com/ZimaBlue-WAM/ZimaBlue", icon: "fig/github.svg" },
+                { name: "Homepage", url: "https://zimablue-wam.github.io/", icon: "globe" }
+            ]
+        },
+        {
             title: "Semantic Generative Tuning for Unified Multimodal Models",
             authors: "Songsong Yu, Yuxin Chen, Ying Shan, Yanwei Li.",
-            conference: "Arxiv Pre-print, 2026",
+            conference: "ECCV, 2026",
             abstract: "Proposes Semantic Generative Tuning (SGT), which adopts image segmentation as a generative post-training objective to bridge visual understanding and generation at the semantic level, yielding consistent gains on BAGEL and OmniGen2 across CV-Bench and GenEval.",
             image: "fig/sgt.png",
             links: [
@@ -150,7 +182,7 @@ window.BLOG_DATA = {
 想了很久不知从何说起，大概是想构建一个角落，像小波的《我的精神家园》，或者是韩寒的《我所理解的生活》。或许渐渐地就能越写越流畅，总之要先开始。
 <br>尽量不说虚妄语，不使文艺腔；尽量不做冷眼看客，不做避世高人；真刀真枪，硬桥硬马；
                 <br><br>
-------------------------------------------- 这是一条分割线-------------------------------------------------
+{{divider}}
 【原文】 “今子有大树，患其无用，何不树之于无何有之乡，广莫之野，彷徨乎无为其侧，逍遥乎寝卧其下。不夭斤斧，物无害者，无所可用，安所困苦哉！” 《庄子·内篇·逍遥游》<br>
 【译文】 “现在你有一棵大树，你愁它没有用处，为什么不把它种在‘什么都没有’的虚静之乡，那广阔无边的旷野里呢？ 你可以无所事事地在树旁徘徊，自由自在地在树下躺着睡觉。 这样，它就不会遭受到斧头的砍伐，也没有什么东西会来伤害它。 正因为它没有什么（世俗的）用处，又哪里会有什么困苦和灾祸呢！”
             `
@@ -161,7 +193,7 @@ window.BLOG_DATA = {
             date: "2025-11-30",
             image: "", // 没有图片留空
             content: `
-            <strong>《山海经·海外北经》夸父与日逐走，入日；渴，欲得饮，饮于河、渭；河、渭不足，北饮大泽。未至，道渴而死。弃其杖，化为邓林。</strong><br><br>
+            {{b: 《山海经·海外北经》夸父与日逐走，入日；渴，欲得饮，饮于河、渭；河、渭不足，北饮大泽。未至，道渴而死。弃其杖，化为邓林。}}<br><br>
 
             再读到夸父逐日，我被这样一个浪漫的古典叙事打动了。经过查阅，不同典籍对结局描写颇为相似，除山海经外，《列子·汤问》中记载"未至，道渴而死。弃其杖，尸膏肉所浸，生邓林。邓林弥广数千里焉。" 这两处关于“杖”的描写颇为有趣，有趣之处在于..., 后面会讲到原因。
 
@@ -171,16 +203,12 @@ window.BLOG_DATA = {
             
             下面的故事权当一乐，未经考究，道听途说。
             
-            <img 
-                src="fig/fuxi.png" 
-                style="width: 300px; height: 400px; display: block; margin: 24px auto;" 
-                class="rounded-lg shadow-md"
-            />                                                                                            
-            <span class="block text-center text-gray-500 text-sm">（图：古人利用圭表测影定节气）</span>
+            {{img: fig/fuxi.png}}
+            {{caption: （图：古人利用圭表测影定节气）}}
             
             相传先祖伏羲持圆规，矩尺，通过圭表测影的方式发现一年大约是360多天，为计数方便，并取为360这样一个整数。其中，“规”这样一个测量仪器用于测量太阳运行的轨迹，也就是黄道，而“矩”则是用来测量日影的长短。古人的宇宙观认为天圆地方，因而也有了“不以规矩，不成方圆”的说法
             
-            --------------12.7
+            {{divider}}
 
             时间略久。来补全一下。
 
@@ -196,11 +224,35 @@ window.BLOG_DATA = {
             对于佛教的热爱，还是到了大学开始的。好像这么说也算不得确切，因此从小家里有供奉菩萨，也算耳濡目染。只不过从大学到硕士阶段，才开始阅读佛教的一些书籍。印象最深的仍然是六祖慧能，以及大家所熟知的慧能和神秀的两段偈子。初读时候觉得不过抖机灵的诡辩，但后面随着对《金刚经》和《坛经》的了解，才发现这是两种完全不同的修行路径和法门。
             ‘时时勤拂拭’说的没错，‘本来无一物’说的也没错，这是两个不同的阶段。所谓‘色即是空’说的是不要痴迷于外物的得，而‘空即是色’说的就是逼迫自己不要痴迷，这件事本身也是一种心外之迷失。
             
-            --------------5.21
+            {{divider}}
             `
-            
-            
+        },
+        {
+            id: 3,
+            title: "歌未竟，东方白",
+            date: "2026-9-3",
+            image: "fig/jinian.jpg",
+            content: `
+            致敬旧体诗的新高峰，新中国的伟大缔造者。
+            `
+        },
+        // {
+        //     id: 4,
+        //     title: "云在青霄水在瓶",
+        //     date: "2026-9-6",
+        //     image: "fig/jinian.jpg",
+        //     content: `
+        //     {{h2:我来问道无余说，云在青天水在瓶。}}
+        //     二四年十一月中旬，由于地势原因，五台山已经早早入了冷冬。此前持斋一周，闻经数回，候补北京到五台的车票，在周五的清晨收到消息购票成功了，于是当晚动身前往。
+        //     车厢还算安静，很快就睡着了。梦里见到了文殊菩萨，是一个鹤发童颜，师父形象（文殊菩萨是七佛之师），没有任何对话，只是平静的望着我。醒来时有感动，没想到这次会是这种形式见面。
 
-        }
+        //     {{h2: 他教我收余恨，休恋逝水，苦海回身，早悟兰因。}}
+        //     从火车站到五台山上需要乘大巴，巧合的是有一个同行大姐，在火车上在我对面的卧铺，大巴上再次遇到，简单攀谈后我们决定结伴同行。这个季节的山上已经冷的彻骨，背阴面处尚有积雪。当天具体的线路已经模糊了，只记得上午先去了五爷庙，戏台和印象中无二，香客依然来来往往，虔诚合十，磕头，口中念念有词。
+            
+        //     我在五爷庙对着戏台出神许久。
+
+        //     从菩萨顶下来后，最后一站我们来到一家小饭馆。
+        //     `
+        // },
     ]
 };

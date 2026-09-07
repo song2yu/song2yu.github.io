@@ -25,15 +25,86 @@
         }
     </script>
     <style>
+        :root { color-scheme: light; }
+        html { scroll-behavior: smooth; }
+        body {
+            background:
+                radial-gradient(circle at 8% 18%, rgba(99, 102, 241, 0.08), transparent 26rem),
+                radial-gradient(circle at 92% 42%, rgba(14, 165, 233, 0.07), transparent 28rem),
+                #f8fafc;
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .text-shadow { text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
         .prose p { margin-bottom: 1.5em; line-height: 1.8; }
-        .prose img { border-radius: 8px; margin: 10px 0; width: 100%; object-fit: cover; }
-        /* 强调文字样式 */
-        strong { color: #3B82F6; font-weight: 600; }
+        .prose img { border-radius: 12px; margin: 10px 0; width: 100%; object-fit: cover; }
+        strong { color: #4f46e5; font-weight: 650; }
+
+        .home-hero::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 0;
+            height: 7rem;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.38), transparent);
+            pointer-events: none;
+        }
+        .hero-photo { filter: saturate(0.88) contrast(1.05); transform: scale(1.01); }
+        .hero-avatar { box-shadow: 0 24px 65px rgba(15, 23, 42, 0.35); }
+        .home-nav { box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06); }
+        .home-nav a { position: relative; }
+        .home-nav a::after {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            right: 0.75rem;
+            bottom: 0.15rem;
+            height: 2px;
+            border-radius: 999px;
+            background: #4f46e5;
+            transform: scaleX(0);
+            transition: transform 200ms ease;
+        }
+        .home-nav a:hover::after { transform: scaleX(1); }
+        .homepage-main > section > h2 {
+            position: relative;
+            border-bottom-color: #e2e8f0;
+            letter-spacing: -0.025em;
+        }
+        .homepage-main > section > h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 3.5rem;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #4f46e5, #38bdf8);
+        }
+        .surface-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-color: rgba(226, 232, 240, 0.85);
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.055);
+            backdrop-filter: blur(12px);
+        }
+        .lift-card { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
+        .lift-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(165, 180, 252, 0.75);
+            box-shadow: 0 22px 50px rgba(15, 23, 42, 0.11);
+        }
+        .media-tile { box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14); }
+        .home-footer { box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18); }
+        @media (max-width: 767px) {
+            .home-hero { height: 560px; }
+            .home-nav ul { overflow-x: auto; justify-content: flex-start; width: 100%; padding-bottom: 0.25rem; }
+            .home-nav li { flex: 0 0 auto; }
+            .homepage-main { padding-top: 2.5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+        }
     </style>
     
     <!-- 核心：引入数据文件 -->
@@ -69,6 +140,39 @@
         function initApp() {
             const DATA = window.BLOG_DATA;
             const safeMap = (arr, fn) => (Array.isArray(arr) ? arr.map(fn).join('') : '');
+            const getNoteTimestamp = (note) => {
+                const [year, month, day] = String(note?.date || '').split(/[-/.]/).map(Number);
+                return year && month && day ? new Date(year, month - 1, day).getTime() : 0;
+            };
+
+            // Shortcode 命令解析器 —— 将 {{cmd:text}} 转换为 HTML
+            const parseCommands = (str) => {
+                if (typeof str !== 'string') return str;
+                return str
+                    .replace(/\{\{h1:\s*(.*?)\}\}/g, '<h1 class="text-3xl font-bold text-slate-900 mt-8 mb-4">$1</h1>')
+                    .replace(/\{\{h2:\s*(.*?)\}\}/g, '<h2 class="text-2xl font-bold text-slate-800 mt-6 mb-3">$1</h2>')
+                    .replace(/\{\{h3:\s*(.*?)\}\}/g, '<h3 class="text-xl font-semibold text-slate-700 mt-4 mb-2">$1</h3>')
+                    .replace(/\{\{b:\s*(.*?)\}\}/g, '<strong>$1</strong>')
+                    .replace(/\{\{i:\s*(.*?)\}\}/g, '<em>$1</em>')
+                    .replace(/\{\{quote:\s*(.*?)\}\}/g, '<blockquote class="border-l-4 border-indigo-300 pl-4 py-2 my-4 text-slate-500 italic bg-slate-50 rounded-r-lg">$1</blockquote>')
+                    .replace(/\{\{center:\s*(.*?)\}\}/g, '<div class="text-center my-4">$1</div>')
+                    .replace(/\{\{divider\}\}/g, '<hr class="my-6 border-slate-200">')
+                    .replace(/\{\{img:\s*(.*?)\}\}/g, '<img src="$1" class="rounded-lg shadow-md mx-auto block my-4" style="max-width:100%;" alt="">')
+                    .replace(/\{\{caption:\s*(.*?)\}\}/g, '<span class="block text-center text-gray-500 text-sm mt-1 mb-4">$1</span>');
+            };
+            // Shortcode 剥离器 —— 用于摘要预览，只保留纯文本
+            const stripCommands = (str) => {
+                if (typeof str !== 'string') return str;
+                return str
+                    .replace(/\{\{h[123]:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{b:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{i:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{quote:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{center:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{caption:\s*(.*?)\}\}/g, '$1')
+                    .replace(/\{\{img:\s*.*?\}\}/g, '')
+                    .replace(/\{\{divider\}\}/g, '');
+            };
             
             // [修改点 1] 尝试从 sessionStorage 读取上次的状态，如果并没有则默认显示 home
             // 这样刷新后，如果你在笔记页，它依然会停留在笔记页，而不是跳回主页
@@ -90,6 +194,10 @@
 
             // --- 主页视图 ---
             function renderHome() {
+                const latestNotes = [...(DATA.notes || [])]
+                    .sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a) || Number(b.id) - Number(a.id))
+                    .slice(0, 2);
+
                 const interestBgImages = {
                     "Photography": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
                     "Hiking": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80",
@@ -102,18 +210,18 @@
 
                 app.innerHTML = `
                     <!-- 1. Hero Header -->
-                    <header class="relative h-[500px] w-full overflow-hidden">
+                    <header class="home-hero relative h-[500px] w-full overflow-hidden">
                         <div class="absolute inset-0 z-0">
                             <img src="https://design.gemcoder.com/staticResource/echoAiSystemImages/cdd16e8ff9ac7652fd7a52c76802013f.png" 
                                  alt="Landscape" 
-                                 class="w-full h-full object-cover" />
+                                 class="hero-photo w-full h-full object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70"></div>
                         </div>
 
                         <div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-16 md:pb-20">
                             <div class="flex flex-col md:flex-row items-center md:items-end text-center md:text-left animate-fade-in-up">
                                 <div class="mb-6 md:mb-0 md:mr-10 flex-shrink-0">
-                                    <div class="w-32 h-32 md:w-44 md:h-44 rounded-full p-1 bg-white/20 backdrop-blur-sm">
+                                    <div class="hero-avatar w-32 h-32 md:w-44 md:h-44 rounded-full p-1.5 bg-white/25 backdrop-blur-md ring-1 ring-white/40">
                                         <img src="${DATA.profile.avatar}" 
                                              alt="Profile" 
                                              class="w-full h-full object-cover rounded-full border-4 border-white shadow-2xl" 
@@ -125,6 +233,7 @@
                                     <h1 class="text-4xl md:text-5xl font-bold mb-3 text-shadow tracking-tight">
                                         ${DATA.profile.name}
                                     </h1>
+                                    ${DATA.profile.heading ? `<div class="text-2xl md:text-3xl font-semibold mb-3 text-shadow tracking-wide opacity-95" style="font-style: italic;">${parseCommands(DATA.profile.heading)}</div>` : ''}
                                     <p class="text-lg md:text-xl text-gray-200 mb-6 font-light max-w-2xl text-shadow opacity-90">
                                         ${DATA.profile.title}
                                     </p>
@@ -145,7 +254,7 @@
                     </header>
 
                     <!-- 2. 导航栏 -->
-                    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+                    <nav class="home-nav sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/70">
                         <div class="container mx-auto px-6">
                             <div class="flex justify-center md:justify-between items-center py-4">
                                 <div class="hidden md:block font-bold text-lg text-slate-800 opacity-0 w-0 overflow-hidden transition-all duration-300 transform -translate-x-4">
@@ -167,14 +276,14 @@
                     </nav>
 
                     <!-- 3. 主要内容区域 -->
-                    <main class="flex-grow container mx-auto px-6 py-12 max-w-5xl">
+                    <main class="homepage-main flex-grow container mx-auto px-5 md:px-6 py-12 md:py-16 max-w-5xl">
                         
                         <!-- Biography Section -->
                         <section id="about" class="mb-20 scroll-mt-24">
                             <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">About Me</h2>
-                            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="surface-card lift-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                                 <div class="prose prose-lg text-slate-600 leading-loose max-w-none">
-                                    ${DATA.profile.bio}
+                                    ${parseCommands(DATA.profile.bio)}
                                 </div>
                             </div>
                         </section>
@@ -186,7 +295,7 @@
                                 ${safeMap(DATA.education, edu => `
                                     <div class="relative group">
                                         <span class="absolute -left-[39px] md:-left-[55px] top-1.5 w-5 h-5 bg-white border-4 border-indigo-600 rounded-full shadow-md group-hover:scale-110 transition-transform"></span>
-                                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+                                        <div class="surface-card lift-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
                                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
                                                 <h3 class="text-xl font-bold text-slate-900">${edu.degree}</h3>
                                                 <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit mt-2 md:mt-0">${edu.period}</span>
@@ -204,7 +313,7 @@
                             <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Experience</h2>
                             <div class="grid gap-6">
                                 ${safeMap(DATA.experience, exp => `
-                                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 flex flex-col md:flex-row gap-5 items-start group">
+                                    <div class="surface-card lift-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 flex flex-col md:flex-row gap-5 items-start group">
                                         <div class="flex-shrink-0 w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                                             <i data-lucide="building-2" class="w-7 h-7"></i>
                                         </div>
@@ -226,7 +335,7 @@
                             <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Publications</h2>
                             <div class="space-y-6">
                                 ${safeMap(DATA.papers, paper => `
-                                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group relative overflow-hidden">
+                                    <div class="surface-card lift-card bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group relative overflow-hidden">
                                         <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                                         ${paper.image ? `<img src="${paper.image}" class="w-200 h-160 object-cover mb-4 rounded" alt="${paper.title || 'paper thumbnail'}">` : ''}
                                         <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors leading-snug">
@@ -264,15 +373,15 @@
                         <section id="latest-notes" class="mb-20 scroll-mt-24">
                             <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-4 border-b border-slate-200">Latest Notes</h2>
                             <div class="grid gap-6 md:grid-cols-2">
-                                ${safeMap((DATA.notes || []).slice(0, 2), note => `
-                                    <div onclick="openNote(${note.id})" class="bg-white rounded-2xl p-6 cursor-pointer hover:shadow-xl transition-all duration-300 border border-slate-100 group flex flex-col h-full hover:-translate-y-1">
+                                ${safeMap(latestNotes, note => `
+                                    <div onclick="openNote(${note.id})" class="surface-card lift-card bg-white rounded-2xl p-6 cursor-pointer hover:shadow-xl transition-all duration-300 border border-slate-100 group flex flex-col h-full hover:-translate-y-1">
                                         <div class="flex items-center justify-between mb-3">
                                             <span class="text-xs font-bold text-indigo-500 bg-indigo-50 px-2 py-1 rounded">${note.date}</span>
                                             <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-indigo-600 transition-colors"></i>
                                         </div>
                                         <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors line-clamp-1">${note.title}</h3>
                                         <p class="text-slate-500 text-sm line-clamp-3 leading-relaxed flex-grow mb-4">
-                                            ${note.content.replace(/<[^>]+>/g, '').substring(0, 120)}...
+                                            ${stripCommands(note.content).replace(/<[^>]+>/g, '').substring(0, 120)}...
                                         </p>
                                         
                                         <!-- Read More 按钮 -->
@@ -298,7 +407,7 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Technical Interests -->
-                                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <div class="surface-card lift-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                                     <div class="flex items-center mb-4">
                                         <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
                                             <i data-lucide="laptop-2" class="w-6 h-6 text-indigo-600"></i>
@@ -313,7 +422,7 @@
                                 </div>
                                 
                                 <!-- Personal Interests -->
-                                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <div class="surface-card lift-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                                     <div class="flex items-center mb-4">
                                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mr-4">
                                             <i data-lucide="user" class="w-6 h-6 text-blue-600"></i>
@@ -329,20 +438,20 @@
                                 
                                 <!-- Media Grid -->
                                 <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                    <div class="media-tile relative h-40 rounded-2xl overflow-hidden group">
                                         <img src="fig/live.jpg" alt="Music" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
                                         <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Music</span>
                                     </div>
-                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                    <div class="media-tile relative h-40 rounded-2xl overflow-hidden group">
                                         <video src="fig/gym.mp4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" autoplay loop muted playsinline></video>
                                         <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Gym</span>
                                     </div>
-                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                    <div class="media-tile relative h-40 rounded-2xl overflow-hidden group">
                                         <img src="assets/img/yelu.jpg" alt="Photography" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                         <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Photography</span>
                                     </div>
-                                    <div class="relative h-40 rounded-xl overflow-hidden group shadow-sm">
+                                    <div class="media-tile relative h-40 rounded-2xl overflow-hidden group">
                                         <img src="assets/img/xueyu.jpg" alt="Food Tasting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                         <span class="absolute bottom-2 left-3 text-white text-xs font-bold text-shadow">Food Tasting</span>
                                     </div>
@@ -350,7 +459,7 @@
                             </div>
                         </section>
 
-                        <footer class="bg-slate-900 text-slate-400 py-4 text-center text-sm rounded-2xl mb-6">
+                        <footer class="home-footer bg-gradient-to-br from-slate-900 to-slate-800 text-slate-300 py-5 text-center text-sm rounded-2xl mb-6 border border-white/10">
                             <p class="mb-2">© 2025 ${DATA.profile.name}. All rights reserved.</p>
                         </footer>
                     </main>
@@ -384,7 +493,7 @@
                                     </div>
                                     <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-10 leading-tight tracking-tight">${selectedNote.title}</h1>
                                     <div class="prose prose-lg prose-slate text-slate-600 leading-8 whitespace-pre-wrap pb-10">
-                                        ${selectedNote.content}
+                                        ${parseCommands(selectedNote.content)}
                                     </div>
                                 </div>
                             </div>
