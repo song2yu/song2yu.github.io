@@ -22,7 +22,7 @@ window.BLOG_DATA = {
     profile: {
         name: "Songsong Yu -- 于松松",
         // heading: "我来问道无余说，云在青天水在瓶。",
-        title: "Ph.D. Student @ SJTU | Intern @ Joy Future Academy",
+        title: "Second Year Ph.D. Student @ SJTU ",
         // 您的个人简介，支持 Markdown 风格的换行
         bio: `I am currently a Ph.D. student at the School of Artificial Intelligence, Shanghai Jiao Tong University, supervised by Prof. <a href="https://yanwei-li.com/" target="_blank" class="sjtu-link underline">Yanwei Li</a>.
         
@@ -32,7 +32,7 @@ window.BLOG_DATA = {
         and Prof. <a href="https://scholar.google.com/citations?user=EfTwkXMolscC&hl=zh-CN&oi=ao" target="_blank" class="sjtu-link underline">Lijun Wang</a>.`,
         
         // 您的头像文件名 (请确保 yusongsong.png 在同一文件夹下，否则会显示默认头像)
-        avatar: "fig/yusongsong.png", 
+        avatar: "fig/eccv26.jpg", 
         
         // 社交链接
         socials: [
@@ -56,23 +56,29 @@ window.BLOG_DATA = {
             degree: "MSc in Info & Comm Engineering",
             school: "Dalian University of Technology",
             period: "Sep 2022 - Jun 2025",
-            desc: `GPA: 3.89/4.0. Supervised by Prof. Huchuan Lu and Prof. Lijun Wang.<br>`
+            desc: `GPA: 3.96/4.0. Supervised by Prof. Huchuan Lu and Prof. Lijun Wang.<br>`
         },
     ],
 
     // === 3. 工作/实习经历 (Experience) ===
     experience: [
         {
+            role: "Research Lead",
+            company: "Haizol, AI LAB",
+            period: "2026.9-Now",
+            desc: `Head of Industrial Foundation Model, focusing on LLM coding & agent, multimodal spatial understanding, etc.`
+        },
+        {
             role: "Research Intern",
             company: "JD, Joy Future Academy",
-            period: "2026.6-Now",
-            desc: "Focusing on world action model."
+            period: "2026.6-2026.10",
+            desc: `Focusing on world action model and autonomous driving, supervised by Dr.<a href="https://fenglinglwb.github.io/" target="_blank" class="text-indigo-600 underline">Wenbo Li</a>.`
         },
         {
             role: "Research Intern",
             company: "Tencent PCG, ARC LAB",
             period: "2024.7-2026.5",
-            desc: `Focusing on spatial intelligence and generative models, supervised by Dr. <a href="https://xxx.com" target="_blank" class="text-indigo-600 underline">Yuxin Chen</a>.`
+            desc: `Focusing on spatial intelligence and generative models, supervised by Dr. <a href="https://uason-chen.github.io/" target="_blank" class="text-indigo-600 underline">Yuxin Chen</a>.`
         }
     ],
 
